@@ -1,0 +1,173 @@
+﻿@page
+@model Portfolio.Pages.ResumeModel
+@{
+    ViewData["title"] = "Nathan Davis - Resume/CV";
+    ViewData["description"] = "This is a copy of Nathan Davis's Resume/CV";
+    ViewData["author"] = "Nathan Davis";
+}
+
+<head>
+    <title>Nathan Davis - Resume/CV</title>
+    <meta name="author" content="Nathan Davis" />
+    <meta name="description"
+          content="This is a copy of Nathan Davis's Resume/CV" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 style="font-family: 'Times New Roman', Times, serif">Resume/CV</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <blockquote class="goto-nav">
+                    <p>
+                        <b>Go to: </b> <a href="#summary">Summary</a> | 
+                        <a href="#skills">Technical Skills</a> | <a href="#education">Education</a> | 
+                        <a href="#projects">Projects</a> | <a href="#experience">Experience</a> | 
+                        <a href="#about-me">About Me</a> | <a href="/Resume/nathan-davis-resume.pdf">PDF</a>
+                    </p>
+                </blockquote>
+                <hr />
+                <div class="list-body">
+                    <h2 id="summary" class="nav-headers">Summary</h2>
+                    <p>
+                        I am a software engineer proficient in C++ and C#. I have some experience writing Java, C, Python, JavaScript/JQuery, HTML, and CSS with the Bootstrap library. I also have exposure to the MASM assembly language.
+                    </p>
+                    <p>
+                        I am proficient in the .NET/.NET Core Framework with C# and the C++ Standard Library. I also have some experience with the Django Framework and the CMake build system for C++. 
+                        I have managed group/individual projects using GitHub and Git Version Control, alongside Trello for task management.
+                    </p>
+                    <p>
+                        I currently live in Weber County in northern Utah. I am open to remote work, as well as work in the Salt Lake City metropolitan area, the Ogden/Layton metropolitan area, and the Logan area.
+                    </p>
+                    <hr />
+                    <h2 id="skills" class="nav-headers">Technical Skills</h2>
+                    <p>
+                        <ul>
+                            <li><b>Languages:</b> C++, C#, C, Java, Python, HTML5, CSS, JavaScript, SQL</li>
+                            <li><b>Frameworks:</b> .NET, Bootstrap, Django, Selenium, Playwright</li>
+                            <li><b>Tools:</b> Git, Microsoft SQL Server, MySQL, Docker</li>
+                        </ul>
+                    </p>
+                    <hr />
+                    <h2 id="education" class="nav-headers">Education</h2>
+                    <p>
+                        <div class="row" style="margin-bottom: 0px; padding-bottom: 0px;">
+                            <div class="col-md-6"><b class="text-start">Weber State University</b></div>
+                            <div class="col-md-6"><p class="text-end" style="margin-bottom: 0px;">Aug 2020 &mdash; Apr 2024</p></div>
+                        </div>
+                        <i>Bachelor of Science in Computer Science, GPA 3.77</i>
+                        <br /> <br />
+                        <p>
+                        <b>Relevant Coursework: </b> Object-Oriented Programming, Formal Languages and Algorithms, Data Structures and
+                        Algorithms, Software Engineering, Server-Side Web Architecture, Web Development, Advanced Database Design.
+                    </p>
+                    <hr />
+                    <h2 id="projects" class="nav-headers">Projects</h2>
+                    <p>
+                        <div class="row" style="margin-bottom: 0px; padding-bottom: 0px;">
+                            <div class="col-md-6"><b class="text-start">Appointment Scheduling System</b></div>
+                            <div class="col-md-6"><p class="text-end" style="margin-bottom: 0px;"><a href="https://github.com/nathandavis18/Steamboat_willie">github.com/nathandavis18/Steamboat-Willie</a></p></div>
+                        </div>
+                        <ul>
+                            <li>
+                                Delivered a final product that Weber State University acquired for non-commercial use, reducing appointment scheduling costs by up to 100%; published full disclaimer on GitHub and About Us page
+                            </li>
+                            <li>
+                                Enhanced basic minimum viable product into a polished system by leveraging client-based insights from advisors and instructors, leading to 50% improvement in product functionality and user experience
+                            </li>
+                            <li>
+                                Built this Capstone project from the ground-up from February 2024 – April 2024 with a team of 4 engineers, enabling students to schedule appointments with advisors, instructors, and tutors utilizing C# and .NET 7.0
+                            </li>
+                            <li>
+                                Implemented automated integration with Google Calendar to populate appointments using Google’s Calendar V3 API
+                            </li>
+                            <li>
+                                Incorporated Google and Microsoft external authentication services allowing users to login and signup using 3rd party services using Google’s and Microsoft’s OAuth2.0 APIs, decreasing account creation time by 30%
+                            </li>
+                        </ul>
+                        <hr />
+                        <div class="row" style="margin-bottom: 0px; padding-bottom: 0px;">
+                            <div class="col-md-6"><b class="text-start">Music Player</b></div>
+                            <div class="col-md-6"><p class="text-end" style="margin-bottom: 0px;"><a href="https://github.com/nathandavis18/Nutty-Music">github.com/nathandavis18/Nutty-Music</a></p></div>
+                        </div>
+                        <ul>
+                            <li>
+                                Engineered a robust music player with queue management capabilities, allowing users to search and play YouTube or local songs; leveraged C++ and wxWidgets to boost application speed by 50%
+                            </li>
+                            <li>
+                                Developed a non-blocking GUI improving the usability of the application by implementing multithreaded functionality to run searching and downloading tasks on secondary threads, improving usability by 30%
+                            </li>
+                            <li>
+                                Designed system to run CLI tools and play music on secondary threads allowing for a fluid GUI using the Windows and WinRT Media APIs, increasing usability by 60%
+                            </li>
+                        </ul>
+                        <hr />
+                        <div class="row" style="margin-bottom: 0px; padding-bottom: 0px;">
+                            <div class="col-md-6"><b class="text-start">Multiplayer Tetris</b></div>
+                            <div class="col-md-6"><p class="text-end" style="margin-bottom: 0px;"><a href="https://github.com/nathandavis18/Co-op-Tetris">github.com/nathandavis18/Co-op-Tetris</a></p></div>
+                        </div>
+                        <ul>
+                            <li>
+                                Created a multiplayer version of Tetris allowing cooperative play for 1-4 players using C++ and SFML
+                            </li>
+                            <li>
+                                Authored a scaling algorithm for automatic board growth, cutting implementation and debugging time by 75%
+                            </li>
+                            <li>
+                                Cut build time down by creating a CMake build script that automates the build process depending on the target architecture (x64 Release, x64 Debug, x86 Release, x86 Debug)
+                            </li>
+                        </ul>
+                        <hr />
+                        <div class="row" style="margin-bottom: 0px; padding-bottom: 0px;">
+                            <div class="col-md-6"><b class="text-start">Data Structures and Algorithms</b></div>
+                            <div class="col-md-6"><p class="text-end" style="margin-bottom: 0px;"><a href="https://github.com/nathandavis18/Projects">github.com/nathandavis18/Projects</a></p></div>
+                        </div>
+                        <ul>
+                            <li>
+                                Designed a vector class with geometric growth on the heap, abstracting the implementation away from the user and handling all allocation and deallocation automatically using C++ templates
+                            </li>
+                            <li>
+                                Composed a merging algorithm to merge 2 sorted containers in linear time using a 2-pointer approach
+                            </li>
+                            <li>
+                                Produced custom random-access compliant iterators to traverse containers without knowledge of the container’s size using C++ templates, decreasing traversal time of lists by up to 50%
+                            </li>
+                        </ul>
+
+                    </p>
+                    <hr />
+                    <h2 id="experience" class="nav-headers">Experience</h2>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-6"><b class="text-start">Personal Shopper</b>, Walmart</div>
+                            <div class="col-md-6"><p class="text-end">Aug 2020 &mdash; Present</p></div>
+                        </div>
+                        <ul>
+                            <li>
+                                Brought the store’s average items picked per hour up by 10%, maintaining an individual average of 200 items picked per hour, while ensuring product quality is at or above standard
+                            </li>
+                            <li>
+                                Reduced store’s average arrival-to-dispense time within a team of 15 employees by 40%, bringing customer satisfaction rates up by 20%
+                            </li>
+                        </ul>
+                    </p>
+                    <hr />
+                    <h2 id="about-me" class="nav-headers">About Me</h2>
+                    <p>
+                        I was originally interested in programming because I wanted to learn how games were made and wanted to make my own. 
+                        I chose to enroll at Weber State University due to all the positive things I had heard about it, and I can say that I made a good choice.
+                        During my time in Weber's computer science degree, I started to enjoy the software engineering side of programming more and more. <br /> <br />
+                        
+                        Outside of my time at Weber and work, I enjoy spending my time working on individual projects, spending time with my family, and playing some of my favorite games.
+                        I also frequently do independent research to further hone my programming skills. I am a motivated self-learner, and pride myself in being the best that I can.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
