@@ -29,11 +29,15 @@ a{
   text-decoration-line: underline;
 }
 
+a:hover{
+  color: rgb(117, 88, 88)
+}
+
 blockquote {
   font-size: 100%;
   margin: 2em 0;
   padding: 0 1.5em;
-  border-left: 1px slategray dotted;
+  border-left: 1px rgb(144, 112, 112) dotted;
   font-family: 'Times New Roman', Times, serif
 }
 
