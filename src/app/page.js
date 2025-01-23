@@ -17,6 +17,8 @@ export default function Home() {
             I have built an appointment scheduling system for Weber State University to use freely and openly for educational and non-commercial purposes. 
             You can view that project <a href="https://github.com/nathandavis18/Steamboat-Willie" target="_blank">here</a>. 
             You can also find more information about my other projects <Link href="/Projects">here</Link>.
+            <br /> <br />
+            My Socials: <a href="https://linkedin.com/in/nathandavis18" target='_blank'>LinkedIn</a> | <a href="https://github.com/nathandavis18" target='_blank'>GitHub</a>
           </p>
         </div>
         <div className="col-span-1 place-items-end mx-full">
