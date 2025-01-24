@@ -7,7 +7,7 @@ export const metadata = {
 export default function Resume(){
     return(
         <div className="place-items-center">
-            <div class="grid grid-cols-6 justify-center">
+            <div className="grid grid-cols-6 justify-center">
                 <div className="max-w-4xl text-center col-span-6">
                     <h1 className="text-5xl font-medium py-5">Resume/CV</h1>
                 </div>
@@ -118,16 +118,13 @@ export default function Resume(){
 
                 <div className="max-w-3xl col-span-5 mt-3" style={{fontSize: '18px'}}><b className="text-start">Portfolio Website</b> | <i>JavaScript, React/Next.js, HTML, CSS, Tailwind</i></div>
                 <div className="max-w-1xl col-span-1 mt-3" style={{fontSize: '18px'}}><p className="text-end">June 2024 &ndash; Present</p></div>
-                <div className="col-span-6 text-end" style={{fontSize: '18px'}}>
-                    <a className="text-end" href="https://github.com/nathandavis18/portfolio" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>github.com/nathandavis18/portfolio</a>
-                </div>
                 <div className="max-w-4xl col-span-6 ml-6 mb-3" style={{fontSize: '18px'}}>
                     <ul>
                         <li>
                             Built a static React/Next.js app portfolio to showcase my skills and projects
                         </li>
                         <li>
-                            Created as a learning project to deepen knowledge of React components and to learn Tailwind CSS
+                            Utilized React hooks and references to create web games playable from my portfolio
                         </li>
                         <li>
                             Utilized Next.js's Link and Navigation functionality for dynamic header updates
