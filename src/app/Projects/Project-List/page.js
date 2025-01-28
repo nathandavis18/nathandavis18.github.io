@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const metadata = {
   title: "Nathan Davis - Projects",
   description: "A list of all of the projects I've worked on, both educational and individual projects. Click to see more!",
@@ -6,7 +8,7 @@ export const metadata = {
 export default function Projects(){
     return(
         <div className="place-items-center">
-            <div class="grid grid-cols-6 justify-center">
+            <div className="grid grid-cols-6 justify-center">
                 <div className="max-w-4xl text-center col-span-6">
                     <h1 className="text-5xl font-medium py-5">My Projects</h1>
                     <hr className="border-zinc-500"/>
@@ -37,8 +39,7 @@ export default function Projects(){
                     <hr className="border-zinc-500 mb-3" />
                 </div>
                 <div className="max-w-4xl col-span-6" style={{fontSize: '18px'}}>
-                    <a href="https://www.github.com/nathandavis18/NotVim-Editor" title="Text Editor"
-                        target="_blank"><h2 id="textEditor" style={{fontSize: '30px'}}>Text Editor</h2></a>
+                    <Link href="/Projects/NotVim-Editor" title="Text Editor"><h2 id="textEditor" style={{fontSize: '30px'}}>Text Editor</h2></Link>
 
                     <p className="ml-5 mr-2 mb-3 mt-1">
                         A 0-dependencies (not even curses/ncurses) console-based text editor, similar to Vim. This project is built using C++, and is designed to be cross-platform, as well as 
@@ -159,6 +160,7 @@ export default function Projects(){
                     This algorithm has a time complexity of O(n + m), where n and m are the lengths of the two containers. It has a space complexity of O(n + m) as well, since unless n or m equals 0, additional space is required.
                     </p>
                 </div>
+                <br /> <br /> <br /> <br />
             </div>
         </div>
     );

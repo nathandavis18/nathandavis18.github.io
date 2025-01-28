@@ -50,7 +50,7 @@ export default function Resume(){
                     <i>Bachelor of Science in Computer Science, 3.77 GPA | cum laude</i>
                     <p className="mt-3">
                         <b>Relavent Courses: </b> Data Structures and Algorithms, Advanced Database Programming, Object-Oriented Programming </p>
-                        <p>&emsp;Web Development, Network Fundamentals</p>
+                        <p>Web Development, Network Fundamentals</p>
                 </div>
                 <hr className="col-span-6 border-zinc-500 mb-3" />
 
@@ -100,7 +100,7 @@ export default function Resume(){
                 <div className="max-w-3xl col-span-5 mt-3" style={{fontSize: '18px'}}><b className="text-start">Terminal Based Text Editor</b> | <i>C++</i></div>
                 <div className="max-w-1xl col-span-1 mt-3" style={{fontSize: '18px'}}><p className="text-end">July 2024 &ndash; Sep 2024</p></div>
                 <div className="col-span-6 text-end" style={{fontSize: '18px'}}>
-                    <a className="text-end" href="https://github.com/nathandavis18/NotVim-Editor" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>github.com/nathandavis18/NotVim-Editor</a>
+                    <a className="text-end" href="https://nathandavis18.com/Projects/NotVim-Editor" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>nathandavis18.com/Projects/NotVim-Editor</a>
                 </div>
                 <div className="max-w-4xl col-span-6 ml-6 mb-3" style={{fontSize: '18px'}}>
                     <ul>
@@ -118,6 +118,9 @@ export default function Resume(){
 
                 <div className="max-w-3xl col-span-5 mt-3" style={{fontSize: '18px'}}><b className="text-start">Portfolio Website</b> | <i>JavaScript, React/Next.js, HTML, CSS, Tailwind</i></div>
                 <div className="max-w-1xl col-span-1 mt-3" style={{fontSize: '18px'}}><p className="text-end">June 2024 &ndash; Present</p></div>
+                <div className="col-span-6 text-end" style={{fontSize: '18px'}}>
+                    <a className="text-end" href="https://nathandavis18.com" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>nathandavis18.com</a>
+                </div>
                 <div className="max-w-4xl col-span-6 ml-6 mb-3" style={{fontSize: '18px'}}>
                     <ul>
                         <li>
@@ -188,6 +191,7 @@ export default function Resume(){
                     Outside of my time at Weber and work, I enjoy spending my time working on individual projects, spending time with my family, and playing some of my favorite games.
                     I also frequently do independent research to further hone my programming skills. I am a motivated self-learner, and pride myself in being the best that I can.
                 </div>
+                <br /> <br /> <br /> <br />
             </div>
         </div>
     );

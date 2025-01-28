@@ -17,10 +17,14 @@ function getLinkStyle(linkPath){
     else if(pathname.includes("/Games") && linkPath === "/Games"){
         return currentPage;
     }
+    else if(pathname.includes("/Projects") && linkPath === "/Projects"){
+        return currentPage;
+    }
     return otherPage;
 }
 export default function Navigation(){
-    const menuButtonText = `${getLinkStyle("/Games")} inline-flex items-center rounded-md`;
+    const gamesNavButton = `${getLinkStyle("/Games")} inline-flex items-center rounded-md`;
+    const projectsNavButton = `${getLinkStyle("/Projects")} inline-flex items-center rounded-md`;
     return(
         <>
         <nav className="bg-white bg-zinc-900 py-2">
@@ -35,11 +39,24 @@ export default function Navigation(){
                             <Link href="/Resume" title="My Resume/CV" className={getLinkStyle("/Resume")} style={{textDecoration: 'none'}}>Resume/CV</Link>
                         </li>
                         <li className="max-w-medium">
-                            <Link href="/Projects" title="A list of all my projects" className={getLinkStyle("/Projects")} style={{textDecoration: 'none'}}>Projects</Link>
+                            <Menu>
+                                <MenuButton className={projectsNavButton}>
+                                    Projects
+                                    <ChevronDownIcon className="size-5" />
+                                </MenuButton>
+                                <MenuItems anchor="bottom" className="px-6 origin-top-middle rounded-xl bg-zinc-800 py-5">
+                                    <MenuItem className="mb-2">
+                                        <Link href="/Projects/Project-List" className={getLinkStyle("/Projects/Project-List")} style={{textDecoration: 'none'}}>Project List</Link>
+                                    </MenuItem>
+                                    <MenuItem className="mb-2">
+                                        <Link href="/Projects/NotVim-Editor" className={getLinkStyle("/Projects/NotVim-Editor")} style={{textDecoration: 'none'}}>NotVim-Editor</Link>
+                                    </MenuItem>
+                                </MenuItems>
+                            </Menu>
                         </li>
                         <li className="max-w-medium">
                             <Menu>
-                                <MenuButton className={menuButtonText}>
+                                <MenuButton className={gamesNavButton}>
                                     Games
                                     <ChevronDownIcon className="size-5" />
                                 </MenuButton>
