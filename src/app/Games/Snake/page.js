@@ -13,17 +13,17 @@ var mSetItem;
 
 var snake = [];
 var apple = {};
-var speed = {};
+var direction = {};
 
 var gameOver = true;
 
 function setupGame(){
     snake = [];
     apple = {x: boardCols / 2 + 2, y: boardRows / 2 - 1};
-    speed = {x: 1, y: 0};
+    direction = {x: 1, y: 0};
     setScore(0);
 
-    var startingX = (boardCols / 2 - 5);
+    var startingX = boardCols / 2 - 5;
     var startingY = boardRows / 2 - 1; 
     snake.push({x: startingX, y: startingY});
     snake.push({x: snake[0].x - 1, y: startingY});
@@ -51,9 +51,9 @@ function setupGame(){
     for(let i = 0; i < snake.length; ++i){
         context.fillStyle = "white";
         context.fillRect(snake[i].x * pieceSize, snake[i].y * pieceSize, pieceSize, pieceSize);
+        
         context.strokeStyle = "blue";
         context.lineWidth = 1;
-
         context.beginPath();
         context.rect(snake[i].x * pieceSize, snake[i].y * pieceSize, pieceSize, pieceSize);
         context.stroke();
@@ -67,9 +67,7 @@ function moveSnake(){
     for(let i = snake.length - 1; i > 0; --i){
         snake[i] = snake[i - 1];
     }
-    if(snake.length){
-        snake[0] = {x: snake[0].x + speed.x, y: snake[0].y + speed.y};
-    }
+    snake[0] = {x: snake[0].x + direction.x, y: snake[0].y + direction.y};
 }
 
 function isDead(){
@@ -120,17 +118,17 @@ function changeDirection(e){
         return;
     }
 
-    if(e.code == "ArrowUp" && speed.y != 1 && snake[0].x != snake[1].x){
-        speed.x = 0; speed.y = -1;
+    if(e.code == "ArrowUp" && direction.y != 1 && snake[0].x != snake[1].x){
+        direction.x = 0; direction.y = -1;
     }
-    else if(e.code == "ArrowDown" && speed.y != -1 && snake[0].x != snake[1].x){
-        speed.x = 0; speed.y = 1;
+    else if(e.code == "ArrowDown" && direction.y != -1 && snake[0].x != snake[1].x){
+        direction.x = 0; direction.y = 1;
     }
-    else if(e.code == "ArrowLeft" && speed.x != 1 && snake[0].y != snake[1].y){
-        speed.x = -1; speed.y = 0;
+    else if(e.code == "ArrowLeft" && direction.x != 1 && snake[0].y != snake[1].y){
+        direction.x = -1; direction.y = 0;
     }
-    else if(e.code == "ArrowRight" && speed.x != -1 && snake[0].y != snake[1].y){
-        speed.x = 1; speed.y = 0;
+    else if(e.code == "ArrowRight" && direction.x != -1 && snake[0].y != snake[1].y){
+        direction.x = 1; direction.y = 0;
     }
 }
 
@@ -183,7 +181,6 @@ export default function Snake(){
 
     [score, setScore] = useState(0);
     [highScore, setHighScore] = useState(0);
-    if(highScore == undefined) setHighScore(0);
 
     useEffect(() => {
         if(boardRef.current === null){
