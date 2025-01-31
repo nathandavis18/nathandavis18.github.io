@@ -209,21 +209,19 @@ export default function Snake(){
     }, []);
 
     return(
-        <div className="flex grid grid-cols-3 gap-1 place-items-center justify-center">
-            <div className="col-span-3">
-                <br /> <br />
-            </div>
-            <div className="col-span-1" />
-            <canvas className="col-span-1" ref={boardRef} />
-            <div className="h-full col-span-1 place-items-start w-96">
-                <div className="place-items-start mx-auto text-xl font-semibold">
-                    <br /> <br /> <br />
-                    <p className="mt-10">Your High Score: {highScore}</p>
-                    <p className="mt-10">Score: {score}</p>
+        <div className="place-items-center justify-center">
+            <br /> <br />
+            <div className="block lg:flex">
+                <div className="lg:flex-1" />
+                <canvas className="lg:flex-none lg:mx-16" ref={boardRef} />
+                <div className="place-items-center lg:place-items-start lg:h-full lg:flex-1 lg:w-96">
+                    <div className="text-center lg:text-start lg:mx-auto text-xl font-semibold">
+                        <p className="mt-10 lg:mt-36">Your High Score: {highScore}</p>
+                        <p className="mt-5 lg:mt-10">Current Score: {score}</p>
+                    </div>
                 </div>
             </div>
-            <div className="col-span-1" />
-            <div className="col-span-1 text-center text-xl font-medium">
+            <div className="text-center text-xl font-medium">
                 <p>
                     <br />
                     Press Space to Start! If you lose, press Space to restart.
@@ -231,6 +229,7 @@ export default function Snake(){
                     Controls: Arrow Keys for movement.
                 </p>
             </div> 
+            <br /> <br />
         </div>
     );
 }

@@ -29,8 +29,8 @@ export default function Navigation(){
         <>
         <nav className="bg-white bg-zinc-900 py-2">
             <div className="max-w-screen-xl flex flex-wrap items-center mx-auto p-4 text-xl">
-                <Link href="/" className="self-center text-2xl dark:text-white pr-8" style={{textDecoration: 'none'}}>Nathan Davis</Link>
-                <div className="hidden md:block md:w-auto" id="navbar-default">
+                <Link href="/" className="self-center text-3xl bg-gradient-to-r from-red-500 via-red-300 to-white text-transparent bg-clip-text" style={{textDecoration: 'none'}}>Nathan Davis</Link>
+                <div className="pl-8 hidden md:block md:w-auto" id="navbar-default">
                     <ul className="font-medium flex flex-col md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0" style={{listStyleType: 'none'}}>
                         <li className="max-w-medium">
                             <Link href="/" title="About Me" className={getLinkStyle("/")} style={{textDecoration: 'none'}}>Home</Link>

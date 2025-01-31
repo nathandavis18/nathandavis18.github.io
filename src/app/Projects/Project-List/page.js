@@ -8,19 +8,19 @@ export const metadata = {
 export default function Projects(){
     return(
         <div className="place-items-center">
-            <div className="grid grid-cols-6 justify-center">
-                <div className="max-w-4xl text-center col-span-6">
+            <div className="grid grid-cols-6 justify-center w-1/2">
+                <div className="text-center col-span-6">
                     <h1 className="text-5xl font-medium py-5">My Projects</h1>
                     <hr className="border-zinc-500"/>
                 </div>
-                <div className="max-w-4xl col-span-6">
+                <div className="col-span-6">
                     <blockquote className="my-8">
                         <b>Go to: </b> <a href="#appointment-scheduler">Appointment Scheduling System</a> | <a href="#textEditor">Text Editor</a> | <a href="#music-player">Music Player</a> | <a href="#multiplayer-tetris">Multiplayer Tetris</a> | <a href="#dsa">Data Structures and Algorithms</a>
                     </blockquote>
                     <hr className="border-zinc-500 mb-3" />
                 </div>
 
-                <div className="max-w-4xl col-span-6" style={{fontSize: '18px'}}>
+                <div className="col-span-6" style={{fontSize: '18px'}}>
                     <a href="https://www.github.com/nathandavis18/Steamboat-Willie" title="Appointment Scheduler Repository" 
                         target="_blank"><h2 id="appointment-scheduler" style={{fontSize: '30px'}}>Appointment Scheduling System</h2></a>
 
@@ -38,7 +38,7 @@ export default function Projects(){
                     </p>
                     <hr className="border-zinc-500 mb-3" />
                 </div>
-                <div className="max-w-4xl col-span-6" style={{fontSize: '18px'}}>
+                <div className="col-span-6" style={{fontSize: '18px'}}>
                     <Link href="/Projects/NotVim-Editor" title="Text Editor"><h2 id="textEditor" style={{fontSize: '30px'}}>Text Editor</h2></Link>
 
                     <p className="ml-5 mr-2 mb-3 mt-1">
@@ -51,7 +51,7 @@ export default function Projects(){
                     </p>
                     <hr className="border-zinc-500 mb-3" />
                 </div>
-                <div className="max-w-4xl col-span-6" style={{fontSize: '18px'}}>
+                <div className="col-span-6" style={{fontSize: '18px'}}>
                     <a href="https://www.github.com/nathandavis18/Nutty-Music" title="Music Player"
                         target="_blank"><h2 id="music-player" style={{fontSize: '30px'}}>Music Player</h2></a>
 
@@ -67,7 +67,7 @@ export default function Projects(){
                     </p>
                     <hr className="border-zinc-500 mb-3" />
                 </div>
-                <div className="max-w-4xl col-span-6" style={{fontSize: '18px'}}>
+                <div className="col-span-6" style={{fontSize: '18px'}}>
                     <a href="https://www.github.com/nathandavis18/Co-op-Tetris" title="Multiplayer Tetris"
                         target="_blank"><h2 id="multiplayer-tetris" style={{fontSize: '30px'}}>Multiplayer Tetris</h2></a>
 
@@ -87,7 +87,7 @@ export default function Projects(){
                     </p>
                     <hr className="border-zinc-500 mb-3" />
                 </div>
-                <div className="max-w-4xl col-span-6" style={{fontSize: '18px'}}>
+                <div className="col-span-6" style={{fontSize: '18px'}}>
                     <a href="https://www.github.com/nathandavis18/Projects" title="Data Structures and Algorithms"
                         target="_blank"><h2 id="dsa" style={{fontSize: '30px'}}>Data Structures and Algorithms</h2></a>
 
