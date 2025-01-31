@@ -8,7 +8,7 @@ export const metadata = {
 export default function Projects(){
     return(
         <div className="place-items-center">
-            <div className="grid grid-cols-6 justify-center w-1/2">
+            <div className="grid grid-cols-6 justify-center w-full md:w-1/2">
                 <div className="text-center col-span-6">
                     <h1 className="text-5xl font-medium py-5">My Projects</h1>
                     <hr className="border-zinc-500"/>
