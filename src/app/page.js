@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Home() {
   const myHeight = "500px";
   return (
-    <div className="place-items-center">      
+    <div className="place-items-center px-5 md:px-0">      
       <div className="text-center flex-none">
         <h1 className="text-6xl py-5 bg-gradient-to-r from-red-500 via-red-300 to-white text-transparent bg-clip-text font-medium">Nathan Davis</h1>
       </div>

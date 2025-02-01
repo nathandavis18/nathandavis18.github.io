@@ -6,8 +6,8 @@ export const metadata = {
 
 export default function Resume(){
     return(
-        <div className="place-items-center">
-            <div className="grid grid-cols-6 justify-center w-full px-2 md:w-1/2">
+        <div className="place-items-center px-5 md:px-0">
+            <div className="grid grid-cols-6 justify-center w-full md:w-1/2">
                 <div className="text-center col-span-6">
                     <h1 className="text-5xl font-medium py-5">Resume/CV</h1>
                     <hr className="border-zinc-500"/>
