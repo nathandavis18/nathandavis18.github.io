@@ -44,3 +44,7 @@ blockquote {
 ul{
   list-style-type:initial;
 }
+
+.snakeCanvas{
+  touch-action: none;
+}

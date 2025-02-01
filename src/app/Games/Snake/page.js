@@ -1,13 +1,22 @@
 "use client";
-import {createRef, useEffect, useState} from 'react';
+import {createRef, useEffect, useState, useRef} from 'react';
 
 const pieceSize = 20;
-const boardCols = 30;
-const boardRows = 30;
+var boardCols = 30;
+var boardRows = 30;
+
+const Moves = Object.freeze({
+    Left: Symbol("left"),
+    Right: Symbol("right"),
+    Up: Symbol("up"),
+    Down: Symbol("down")
+});
 
 var context, board;
 var score, setScore;
 var highScore, setHighScore;
+var swipeStartX, swipeEndX;
+var swipeStartY, swipeEndY;
 
 var mSetItem;
 
@@ -15,7 +24,7 @@ var snake = [];
 var apple = {};
 var direction = {};
 
-var gameOver = true;
+var gameOver, setGameOver;
 
 function setupGame(){
     snake = [];
@@ -109,27 +118,103 @@ function collectedApple(){
     }
 }
 
+function setDirection(move){
+    if(move == Moves.Up && direction.y != 1 && snake[0].x != snake[1].x){
+        direction.x = 0; direction.y = -1;
+    }
+    else if(move == Moves.Down && direction.y != -1 && snake[0].x != snake[1].x){
+        direction.x = 0; direction.y = 1;
+    }
+    else if(move == Moves.Left && direction.x != 1 && snake[0].y != snake[1].y){
+        direction.x = -1; direction.y = 0;
+    }
+    else if(move == Moves.Right && direction.x != -1 && snake[0].y != snake[1].y){
+        direction.x = 1; direction.y = 0;
+    }
+}
+
 function changeDirection(e){
     if(gameOver) {
         if(e.code == "Space") {
-            gameOver = false;
+            setGameOver(false);
             setupGame();
         }
         return;
     }
 
-    if(e.code == "ArrowUp" && direction.y != 1 && snake[0].x != snake[1].x){
-        direction.x = 0; direction.y = -1;
+    if(e.code == "ArrowUp"){
+        setDirection(Moves.Up);
     }
-    else if(e.code == "ArrowDown" && direction.y != -1 && snake[0].x != snake[1].x){
-        direction.x = 0; direction.y = 1;
+    else if(e.code == "ArrowDown"){
+        setDirection(Moves.Down);
     }
-    else if(e.code == "ArrowLeft" && direction.x != 1 && snake[0].y != snake[1].y){
-        direction.x = -1; direction.y = 0;
+    else if(e.code == "ArrowLeft"){
+        setDirection(Moves.Left);
     }
-    else if(e.code == "ArrowRight" && direction.x != -1 && snake[0].y != snake[1].y){
-        direction.x = 1; direction.y = 0;
+    else if(e.code == "ArrowRight"){
+        setDirection(Moves.Right);
     }
+}
+
+const startButton = () => {
+    if(!gameOver) return;
+
+    setupGame();
+    setGameOver(false);
+}
+
+const onTouchStart = (e) => {
+    if(gameOver) return;
+
+    e.preventDefault();
+
+    swipeEndX.current = null;
+    swipeEndY.current = null;
+    
+    swipeStartX.current = e.targetTouches[0].clientX;
+    swipeStartY.current = e.targetTouches[0].clientY;
+}
+
+const onTouchMove = (e) => {
+    if(gameOver) return;
+
+    e.preventDefault();
+
+    swipeEndX.current = e.targetTouches[0].clientX;
+    swipeEndY.current = e.targetTouches[0].clientY;
+}
+
+const minSwipeDistance = 50;
+
+const onTouchEnd = (e) => {
+    if(gameOver) return;
+
+    e.preventDefault();
+
+    if((!swipeStartX.current || !swipeEndX.current) && (!swipeStartY.current || !swipeEndY.current)) return; //No swipe was made
+    const distanceX = swipeStartX.current - swipeEndX.current;
+    const distanceY = swipeStartY.current - swipeEndY.current;
+
+    if(!(Math.abs(distanceX) >= minSwipeDistance || Math.abs(distanceY) >= minSwipeDistance)) return;
+
+    if(Math.abs(distanceX) > Math.abs(distanceY)){
+        if(distanceX > minSwipeDistance){
+            setDirection(Moves.Left);
+        }
+        else{
+            setDirection(Moves.Right);
+        }
+    }
+    else{
+        if(distanceY > minSwipeDistance){
+            setDirection(Moves.Up);
+        }
+        else{
+            setDirection(Moves.Down);
+        }
+    }
+
+    console.log(distanceX + " | " + distanceY);
 }
 
 function gameLoop(){
@@ -138,7 +223,7 @@ function gameLoop(){
     }
 
     moveSnake();
-    gameOver = isDead();
+    setGameOver(isDead());
     collectedApple();
     
     context.fillStyle = "green";
@@ -181,8 +266,20 @@ export default function Snake(){
 
     [score, setScore] = useState(0);
     [highScore, setHighScore] = useState(0);
+    swipeStartX = useRef(null);
+    swipeEndX = useRef(null);
+    swipeStartY = useRef(null);
+    swipeEndY = useRef(null);
+    [gameOver, setGameOver] = useState(true);
 
     useEffect(() => {
+        while(screen.width < boardCols * pieceSize){
+            --boardCols;
+        }
+        while(screen.height < boardRows * pieceSize){
+            --boardRows;
+        }
+
         if(boardRef.current === null){
             throw new Error("Board is not used");
         }
@@ -210,10 +307,15 @@ export default function Snake(){
 
     return(
         <div className="place-items-center justify-center">
-            <br /> <br />
+            <br className="hidden md:block" />
+            <br />
             <div className="block lg:flex">
                 <div className="lg:flex-1" />
-                <canvas className="lg:flex-none lg:mx-16" ref={boardRef} />
+                <div className="relative place-items-center text-center md:mx-5" style={{height: (boardRows * pieceSize) + 'px', width: (boardCols * pieceSize) + 'px'}} ref={() => {gameOver == false ? null : null}}>
+                    <canvas className={"absolute md:static snakeCanvas" + (gameOver == true ? " opacity-20 bg-gray-500 md:opacity-100 md:bg-zinc-900" : "")} ref={boardRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onTouchMove={onTouchMove} onTouchCancel={(e) => e.preventDefault()}/>
+                    <button className={(gameOver == true ? "absolute " : "hidden ") + "text-center w-full h-full top-0 left-0 md:hidden"} type="button" onClick={startButton}>Press to start!</button>
+                </div>
+                
                 <div className="place-items-center lg:place-items-start lg:h-full lg:flex-1 lg:w-96">
                     <div className="text-center lg:text-start lg:mx-auto text-xl font-semibold">
                         <p className="mt-10 lg:mt-36">Your High Score: {highScore}</p>
@@ -221,14 +323,14 @@ export default function Snake(){
                     </div>
                 </div>
             </div>
-            <div className="text-center text-xl font-medium">
+            <div className="text-center text-xl font-medium hidden md:block">
                 <p>
                     <br />
                     Press Space to Start! If you lose, press Space to restart.
                     <br />
                     Controls: Arrow Keys for movement.
                 </p>
-            </div> 
+            </div>
             <br /> <br />
         </div>
     );
