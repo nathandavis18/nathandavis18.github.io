@@ -6,8 +6,8 @@ export const metadata = {
 
 export default function Resume(){
     return(
-        <div className="place-items-center px-5 md:px-0">
-            <div className="grid grid-cols-6 justify-center w-full md:w-1/2">
+        <div className="place-items-center px-5">
+            <div className="grid grid-cols-6 justify-center w-full max-w-4xl">
                 <div className="text-center col-span-6">
                     <h1 className="text-5xl font-medium py-5">Resume/CV</h1>
                     <hr className="border-zinc-500"/>
@@ -101,7 +101,7 @@ export default function Resume(){
 
                     <div className="flex w-full">
                         <div className="mt-3 w-3/4" style={{fontSize: '18px'}}><b className="text-start">Terminal Based Text Editor</b> | <i>C++</i></div>
-                        <div className="mt-3 w-1/4" style={{fontSize: '18px'}}><p className="text-end">July 2024 &ndash; Sep 2024</p></div>
+                        <div className="mt-3 w-1/4" style={{fontSize: '18px'}}><p className="text-end">July 2024 &ndash; Present</p></div>
                     </div>
                     <div className="text-end" style={{fontSize: '18px'}}>
                         <a className="text-end" href="https://nathandavis18.com/Projects/NotVim-Editor" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>nathandavis18.com/Projects/NotVim-Editor</a>
@@ -130,10 +130,12 @@ export default function Resume(){
                     <div className="ml-6 mb-3 mt-2" style={{fontSize: '18px'}}>
                         <ul>
                             <li>
-                                Built a static React/Next.js app portfolio to showcase my skills and projects
+                                Built a static React/Next.js app to showcase my skills and projects; 
+                                utilized Tailwind for a responsive design, enabling good viewing support on a wide range of devices
                             </li>
                             <li>
-                                Utilized React hooks and references to create web games playable from my portfolio
+                                Utilized React hooks, states, and references to create web games with serverless storage playable from my portfolio; 
+                                mobile-support included using swipe controls
                             </li>
                             <li>
                                 Utilized Next.js's Link and Navigation functionality for dynamic header updates

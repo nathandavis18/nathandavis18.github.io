@@ -5,7 +5,7 @@ export const metadata = {
 }
 export default function NotVimEditor(){
     return(
-        <div className="place-items-center px-5 md:px-0">
+        <div className="place-items-center px-5">
             <div className="max-w-4xl text-center">
                 <h1 className="text-5xl font-medium py-5">NotVim Editor</h1>
                 <div className="col-span-6 text-center pb-5" style={{fontSize: '18px'}}>
