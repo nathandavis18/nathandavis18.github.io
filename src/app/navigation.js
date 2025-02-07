@@ -73,6 +73,9 @@ export default function Navigation(){
                                     <MenuItem className="mb-2">
                                         <Link href="/Games/Snake" className={getLinkStyle("/Games/Snake")} style={{textDecoration: 'none'}}>Snake</Link>
                                     </MenuItem>
+                                    <MenuItem className="mb-2">
+                                        <Link href="/Games/Tetris" className={getLinkStyle("/Games/Tetris")} style={{textDecoration: 'none'}}>Tetris</Link>
+                                    </MenuItem>
                                 </MenuItems>
                             </Menu>
                         </li>
@@ -116,6 +119,9 @@ export default function Navigation(){
                                 <MenuItems anchor="bottom" className="px-6 origin-top-middle rounded-xl bg-zinc-800 py-5">
                                     <MenuItem className="mb-2">
                                         <CloseButton as={Link} href="/Games/Snake" className={getLinkStyle("/Games/Snake")} style={{textDecoration: 'none'}}>Snake</CloseButton>
+                                    </MenuItem>
+                                    <MenuItem className="mb-2 hidden">
+                                        <CloseButton as={Link} href="/Games/Tetris" className={getLinkStyle("/Games/Tetris")} style={{textDecoration: 'none'}}>Tetris</CloseButton>
                                     </MenuItem>
                                 </MenuItems>
                             </Menu>

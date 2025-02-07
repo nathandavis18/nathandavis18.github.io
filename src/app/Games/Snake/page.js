@@ -17,6 +17,7 @@ var score, setScore;
 var highScore, setHighScore;
 var swipeStartX, swipeEndX;
 var swipeStartY, swipeEndY;
+var gameOver, setGameOver;
 
 var mSetItem;
 
@@ -24,7 +25,6 @@ var snake = [];
 var apple = {};
 var direction = {};
 
-var gameOver, setGameOver;
 
 function setupGame(){
     snake = [];
@@ -213,8 +213,6 @@ const onTouchEnd = (e) => {
             setDirection(Moves.Down);
         }
     }
-
-    console.log(distanceX + " | " + distanceY);
 }
 
 function gameLoop(){
@@ -313,7 +311,7 @@ export default function Snake(){
                 <div className="lg:flex-1" />
                 <div className="relative place-items-center text-center md:mx-5" style={{height: (boardRows * pieceSize) + 'px', width: (boardCols * pieceSize) + 'px'}} ref={() => {gameOver == false ? null : null}}>
                     <canvas className={"absolute md:static snakeCanvas" + (gameOver == true ? " opacity-20 bg-gray-500 md:opacity-100 md:bg-zinc-900" : "")} ref={boardRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onTouchMove={onTouchMove} onTouchCancel={(e) => e.preventDefault()}/>
-                    <button className={(gameOver == true ? "absolute " : "hidden ") + "text-center w-full h-full top-0 left-0 md:hidden"} type="button" onClick={startButton}>Press to start!</button>
+                    <button className={(gameOver == true ? "absolute " : "hidden ") + "text-center w-full h-full top-0 left-0 md:hidden"} type="button" onClick={startButton}>Click to start!</button>
                 </div>
                 
                 <div className="place-items-center lg:place-items-start lg:h-full lg:flex-1 lg:w-96">
