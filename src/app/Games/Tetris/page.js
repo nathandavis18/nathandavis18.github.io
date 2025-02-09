@@ -64,7 +64,7 @@ function clearLines(){
 
     clearedLines += currentLinesCleared;
     while(currentLinesCleared > 0){
-        for(let y = yClearLevel; y >= 0; --y){
+        for(let y = yClearLevel; y > 0; --y){
             for(let x = 0; x < boardWidth; ++x){
                 setBoardPosition(x, y, getBoardPosition(x, y - 1, boardWidth), boardWidth);
             }
