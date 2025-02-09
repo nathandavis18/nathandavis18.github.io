@@ -191,7 +191,7 @@ const onTouchEnd = (e) => {
 
     e.preventDefault();
 
-    if((!swipeStartX.current || !swipeEndX.current) && (!swipeStartY.current || !swipeEndY.current)) return; //No swipe was made
+    if((!swipeStartX.current || !swipeEndX.current) || (!swipeStartY.current || !swipeEndY.current)) return; //No swipe was made
     const distanceX = swipeStartX.current - swipeEndX.current;
     const distanceY = swipeStartY.current - swipeEndY.current;
 
@@ -271,10 +271,10 @@ export default function Snake(){
     [gameOver, setGameOver] = useState(true);
 
     useEffect(() => {
-        while(screen.width < boardCols * pieceSize){
+        while(window.innerWidth < boardCols * pieceSize){
             --boardCols;
         }
-        while(screen.height < boardRows * pieceSize){
+        while(window.innerHeight < boardRows * pieceSize){
             --boardRows;
         }
 

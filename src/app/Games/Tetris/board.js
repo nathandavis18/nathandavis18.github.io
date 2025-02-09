@@ -1,4 +1,4 @@
-const mBoard = [];
+export const mBoard = [];
 
 export function initBoard(boardWidth, boardHeight){
     if(mBoard.length == boardWidth * boardHeight){
@@ -15,7 +15,7 @@ export function setBoardPosition(x, y, value, boardWidth){
 }
 
 export function getBoardPosition(x, y, boardWidth){
-    return mBoard[y * boardWidth + x];
+    return (mBoard.at(y * boardWidth + x) == 1);
 }
 
 export function drawBoard(context, pieceSize, boardWidth, boardHeight){

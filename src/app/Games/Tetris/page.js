@@ -5,7 +5,7 @@ import {State, getBlock, drawPiece, getPieceData} from './pieceState';
 import { tryRotate } from './rotate';
 import { getBoardPosition, setBoardPosition, drawBoard, initBoard } from './board';
 
-const pieceSize = 30;
+let pieceSize = 30;
 const boardWidth = 10;
 const boardHeight = 20;
 var clearedLines = 0;
@@ -21,7 +21,8 @@ var gameIntervalId;
 
 var context, board;
 var level, setLevel;
-var swipeStartX, swipeEndX;
+var swipeStartX, swipeEndX, actualStartX, actualStartY;
+var swipeStartTime;
 var swipeStartY, swipeEndY;
 var gameOver, setGameOver;
 var canMove, setCanMove;
@@ -30,7 +31,6 @@ var mState;
 
 function newPiece(){
     let p = getBlock();
-    console.log(p);
     mState = new State(boardWidth, p);
 }
 
@@ -78,15 +78,13 @@ function hasCollided(){
         for(let y = 0; y < mState.piece.width; ++y){
             if(getPieceData(mState.piece, x, y, mState.rotation)){
                 const bX = mState.xOffset + x;
-                const bY = mState.yOffset + y;
+                const bY = mState.yOffset + y + 1;
 
                 if(getBoardPosition(bX, bY, boardWidth) || bY == boardHeight){
-                    if(bY < 0) {
+                    if(bY < 0 || (getBoardPosition(bX, bY - 1, boardWidth) && bY - 1 == 0)) {
                         setGameOver(true);
                         return -1;
                     }
-
-                    --mState.yOffset;
                     return 1;
                 }
             }
@@ -129,21 +127,22 @@ function getBottom(){
             }
         }
     }
-    return finalAmount + 1;
+    return finalAmount;
 
 }
 
 function ghostPiece(){
     if(mState == null) return;
 
-    let y = getBottom() + mState.yOffset - 1;
+    let y = getBottom() + mState.yOffset;
     drawPiece(context, pieceSize, mState.piece, mState.rotation, mState.xOffset, y, true);
 }
 
 function movePiece(move){
     if(gameOver){
-        //return;
+        return;
     }
+
     if(!canMove) return;
     setCanMove(false);
     switch(move){
@@ -154,9 +153,9 @@ function movePiece(move){
             ++mState.xOffset;
             return;
         case Moves.Down:
-            ++mState.yOffset;
             clearInterval(gameIntervalId);
             gameLoop(true);
+            ++mState.yOffset;
             gameIntervalId = setInterval(gameLoop, nextTick(level) * 1000);
             return;
         case Moves.Drop:
@@ -210,10 +209,11 @@ const keyboardInput = (e) => {
             return;
     }
 }
+const minSwipeDistance = 15;
+const hardDropSwipeDistance = 15;
 
 const onTouchStart = (e) => {
     if(gameOver) return;
-
     e.preventDefault();
 
     swipeEndX.current = null;
@@ -221,21 +221,69 @@ const onTouchStart = (e) => {
     
     swipeStartX.current = e.targetTouches[0].clientX;
     swipeStartY.current = e.targetTouches[0].clientY;
+    actualStartX.current = swipeStartX.current;
+    actualStartY.current = swipeStartY.current;
+    swipeStartTime.current = new Date();
 }
 
 const onTouchMove = (e) => {
-    if(gameOver) return;
+    if(gameOver || actualStartX.current == null || actualStartY.current == null) return;
 
     e.preventDefault();
 
     swipeEndX.current = e.targetTouches[0].clientX;
     swipeEndY.current = e.targetTouches[0].clientY;
+
+    const distanceX = swipeEndX.current != null ? swipeEndX.current - swipeStartX.current : 0;
+    const distanceY = swipeEndY.current != null ? swipeEndY.current - swipeStartY.current : 0;
+    const totalDistanceY = swipeEndY.current != null ? swipeEndY.current - actualStartY.current : 0;
+
+    if(Math.abs(distanceX) < minSwipeDistance && Math.abs(distanceY) < minSwipeDistance) return;
+
+    swipeStartX.current = swipeEndX.current;
+    swipeStartY.current = swipeEndY.current;
+
+    if(Math.abs(distanceX) > Math.abs(distanceY)){
+        if(Math.abs(distanceX) >= minSwipeDistance && distanceX > 0){
+            isValidMove(Moves.Right);
+        }
+        else if(Math.abs(distanceX) >= minSwipeDistance && distanceX < 0){
+            isValidMove(Moves.Left);
+        }
+    }
+    else {
+        if(distanceY >= minSwipeDistance){
+            let timeSinceSwipe = swipeStartTime.current != null ? Math.floor(new Date().getTime() - swipeStartTime.current.getTime()) : 1000;
+            if(totalDistanceY >= hardDropSwipeDistance && timeSinceSwipe <= 35){
+                movePiece(Moves.Drop);
+            }
+            else{
+                movePiece(Moves.Down);
+            }
+        }
+    }
 }
 
-const minSwipeDistance = 50;
 
 const onTouchEnd = (e) => {
     if(gameOver) return;
+
+    if((!actualStartX.current || !actualStartY.current)) return; //No touch was made
+    const distanceX = swipeEndX.current != null ? actualStartX.current - swipeEndX.current : 0;
+    const distanceY = swipeEndY.current != null ? actualStartY.current - swipeEndY.current : 0;
+
+    if(Math.abs(distanceX) < minSwipeDistance && Math.abs(distanceY) < minSwipeDistance){
+        if(swipeStartX.current < Math.floor(window.innerWidth / 2)){ //Touched left side of screen
+            tryRotate(Moves.RotateBack, mState, boardWidth, boardHeight);
+        }
+        else if(swipeStartX.current >= Math.floor(window.innerWidth / 2)){
+            tryRotate(Moves.Rotate, mState, boardWidth, boardHeight);
+        }
+    }
+
+    actualStartX.current = null;
+    actualStartY.current = null;
+    swipeStartTime.current = null;
 }
 
 function startButton(){
@@ -250,10 +298,10 @@ function startButton(){
 
 function gameLoop(moved = false){
     if(gameOver) return;
-    if(!moved) ++mState.yOffset;
 
     let lost = hasCollided();
     if(lost != 0) {
+        actualStartX.current = null; actualStartY.current = null;
         updateBoard();
         clearLines();
         updateLevel();
@@ -261,6 +309,9 @@ function gameLoop(moved = false){
         else{
             mState = null;
         }
+    }
+    else if(!moved) {
+        ++mState.yOffset;
     }
 }
 
@@ -303,6 +354,9 @@ export default function Tetris(){
     swipeEndX = useRef(null);
     swipeStartY = useRef(null);
     swipeEndY = useRef(null);
+    actualStartX = useRef(null);
+    actualStartY = useRef(null);
+    swipeStartTime = useRef(null);
     [gameOver, setGameOver] = useState(true);
     [canMove, setCanMove] = useState(true);
 
@@ -311,6 +365,10 @@ export default function Tetris(){
             throw new Error("Board is not used");
         }
         
+        if(window.width < 450){
+            pieceSize = 25;
+        }
+
         board = boardRef.current;
         board.height = boardHeight * pieceSize;
         board.width = boardWidth * pieceSize;
@@ -339,7 +397,7 @@ export default function Tetris(){
             <br />
             <div className="block lg:flex">
                 <div className="lg:flex-1" />
-                <div className="relative place-items-center text-center md:mx-10" style={{height: (boardHeight * pieceSize) + 'px', width: (boardWidth * pieceSize) + 'px'}} ref={() => {gameOver == false ? null : null}}>
+                <div className="relative place-items-center text-center md:mx-10" style={{height: (boardHeight * pieceSize) + 'px', width: (boardWidth * pieceSize) + 'px'}} ref={() => {gameOver == false || pieceSize == 25 ? null : null}}>
                     <canvas className={"absolute snakeCanvas" + (gameOver == true ? " opacity-20 bg-gray-500" : "")} ref={boardRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onTouchMove={onTouchMove} onTouchCancel={(e) => e.preventDefault()}/>
                     <button className={(gameOver == true ? "absolute " : "hidden ") + "text-center w-full h-full top-0 left-0"} type="button" onClick={startButton}>Click to start!</button>
                 </div>

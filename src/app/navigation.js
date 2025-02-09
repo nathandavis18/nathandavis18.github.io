@@ -120,7 +120,7 @@ export default function Navigation(){
                                     <MenuItem className="mb-2">
                                         <CloseButton as={Link} href="/Games/Snake" className={getLinkStyle("/Games/Snake")} style={{textDecoration: 'none'}}>Snake</CloseButton>
                                     </MenuItem>
-                                    <MenuItem className="mb-2 hidden">
+                                    <MenuItem className="mb-2">
                                         <CloseButton as={Link} href="/Games/Tetris" className={getLinkStyle("/Games/Tetris")} style={{textDecoration: 'none'}}>Tetris</CloseButton>
                                     </MenuItem>
                                 </MenuItems>

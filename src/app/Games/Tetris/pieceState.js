@@ -47,8 +47,7 @@ const allBlocks = [
 
 export function getBlock(){
     let randNum = Math.floor(Math.random() * allBlocks.length);
-    console.log(randNum);
-    return allBlocks[randNum];
+    return allBlocks[6];
 }
 
 export class State{
@@ -61,7 +60,7 @@ export class State{
         this.piece = p;
         this.rotation = 0;
         this.xOffset = Math.floor(boardWidth / 2) - Math.floor(p.width / 2);
-        this.yOffset = -1;
+        this.yOffset = p.width == 4 ? -1 : 0;
     }
 };
 

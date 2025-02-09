@@ -1,14 +1,16 @@
 import {Moves} from './moves';
-import {State, getPieceData} from './pieceState';
-import { getBoardPosition } from './board';
+import {getPieceData} from './pieceState';
+import { getBoardPosition, mBoard } from './board';
 
 function validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight){
     for(let x = 0; x < pieceState.piece.width; ++x){
         for(let y = 0; y < pieceState.piece.width; ++y){
             if(getPieceData(pieceState.piece, x, y, nextRotation)){
-                let bX = pieceState.xOffset + x + xMovement;
-                let bY = pieceState.yOffset + y + yMovement;
-                if(getBoardPosition(bX, bY) || bX < 0 || bX >= boardWidth || bY >= boardHeight) return false;
+                const bX = pieceState.xOffset + x + xMovement;
+                const bY = pieceState.yOffset + y + yMovement;
+                if(getBoardPosition(bX, bY, boardWidth) || bX < 0 || bX >= boardWidth || bY >= boardHeight) {
+                    return false;
+                }
             }
         }
     }
@@ -35,10 +37,9 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
     if(pieceState.piece.width == oPieceWidth) return; //O piece can't rotate
     
     //Test 1 for every piece
-    if(validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+    if(validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
         return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
     }
-
     if(move == Moves.Rotate){
         if(pieceState.piece.width == iPieceWidth){ //I Piece has a unique rotation system
             //Test 2
@@ -58,7 +59,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 1;
                 yMovement = 0;
             }
-            if(validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if(validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             }
     
@@ -82,7 +83,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                     xMovement = -2;
                     yMovement = 0;
                 }
-                if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight))
+                if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true)
                 {
                     return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
                 }
@@ -109,7 +110,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                     xMovement = 1;
                     yMovement = 2;
                 }
-                if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight))
+                if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true)
                 {
                     return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
                 }
@@ -136,7 +137,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                     xMovement = -2;
                     yMovement = -1;
                 }
-                if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight))
+                if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true)
                 {
                     return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
                 }
@@ -155,7 +156,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 yMovement = 0;
             }
     
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight))
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true)
             {
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             }
@@ -182,7 +183,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = -1;
                 yMovement = 1;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight))
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true)
             {
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             }
@@ -199,7 +200,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 0;
                 yMovement = -2;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight))
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true)
             {
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             }
@@ -226,7 +227,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = -1;
                 yMovement = -2;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight))
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true)
             {
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             }
@@ -252,7 +253,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = -1;
                 yMovement = 0;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             } //Test 2 End
 
@@ -273,7 +274,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 2;
                 yMovement = 0;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             } //End Test 3
 
@@ -294,7 +295,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = -1;
                 yMovement = -2;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             } //End Test 4
 
@@ -315,7 +316,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 2;
                 yMovement = 1;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             } //End Test 5
         }
@@ -337,7 +338,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 1;
                 yMovement = 0;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             } //End Test 2
 
@@ -358,7 +359,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 1;
                 yMovement = -1;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             } //End Test 3
 
@@ -379,7 +380,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 0;
                 yMovement = 2;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             } //End Test 4
 
@@ -400,7 +401,7 @@ export function tryRotate(move, pieceState, boardWidth, boardHeight){
                 xMovement = 1;
                 yMovement = 2;
             }
-            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight)){
+            if (validRotateStatus(pieceState, nextRotation, xMovement, yMovement, boardWidth, boardHeight) == true){
                 return rotatePiece(pieceState, xMovement, yMovement, nextRotation);
             }
         }
