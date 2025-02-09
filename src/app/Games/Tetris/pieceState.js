@@ -47,7 +47,7 @@ const allBlocks = [
 
 export function getBlock(){
     let randNum = Math.floor(Math.random() * allBlocks.length);
-    return allBlocks[6];
+    return allBlocks[randNum];
 }
 
 export class State{
