@@ -24,7 +24,7 @@ export default function Resume(){
                     <h2 id="summary" style={{fontSize: '30px'}}>Summary</h2>
 
                     <p className="mr-2 mb-3 mt-1">
-                        I am a software engineer proficient in C#, JavaScript, HTML, CSS, and C++. I have some experience writing Java, Python, SQL, and C.
+                        I am a software engineer proficient in C#, JavaScript, HTML, CSS, and C++. I have some experience writing TypeScript, Java, Python, SQL, and C.
                         I also have some exposure to the MASM language.
                     </p>
                     <p className="mr-2 mb-3">
@@ -59,9 +59,9 @@ export default function Resume(){
                     <h2 id="skills" style={{fontSize: '30px'}}>Technical Skills</h2>
                     <div className="ml-6 mb-5" style={{fontSize: '18px'}}>
                         <ul>
-                            <li><b>Languages:</b> C#, JavaScript, Python, HTML, CSS, SQL, C++</li>
-                            <li><b>Frameworks:</b> .NET, React, Next.js, Bootstrap, Tailwind, Django, Playwright</li>
-                            <li><b>DevOps/Tools:</b> OOP, Git, AWS, Agile, CI/CD (GitHub Actions), Microsoft SQL Server, MySQL</li>
+                            <li><b>Languages:</b> C#, JavaScript, TypeScript, Python, HTML, CSS, SQL, C++</li>
+                            <li><b>Frameworks:</b> .NET, Tailwind, React, Next.js, Django, Playwright, Bootstrap</li>
+                            <li><b>DevOps/Tools:</b> Git, Agile, CI/CD (GitHub Actions), Microsoft SQL Server, MySQL</li>
                         </ul>
                     </div>
                     <hr className="border-zinc-500 mb-3" />
@@ -79,22 +79,23 @@ export default function Resume(){
                     <div className="ml-6 mb-3 mt-2" style={{fontSize: '18px'}}>
                         <ul>
                             <li>
-                                Collaborated with a team of 4 engineers to design and build a SaaS platform enabling students to schedule appointments with advisors/instructors; 
-                                adopted by Weber State University for educational and non-commercial uses
+                                Led the development of a SaaS platform enabling students to schedule appointments with advisors and instructors; 
+                                adopted by Weber State University for educational and non-commercial purposes
                             </li>
                             <li>
-                                Enhanced basic minimum viable product into a polished system by leveraging client-based insights from advisors and instructors, 
-                                leading to an improvement in product functionality and user experience
+                                Enhanced minimum viable product (MVP) functionality by incorporating user feedback, improving UI/UX and overall 
+                                system usability based on real-world advisor and student feedback 
                             </li>
                             <li>
-                                Designed filtering algorithm enabling students to filter for specific appointments, decreasing appointment search time
+                                Designed and implemented an efficient filtering algorithm, reducing appointment search time and improving 
+                                accessibility for students 
                             </li>
                             <li>
-                                Implemented automated integration with Google Calendar to populate user's calendar via Google's Calendar V3 API
+                                Integrated Google Calendar API, enabling automated appointment synchronization
                             </li>
                             <li>
-                                Incorporated Google and Microsoft external authentication services allowing users to 
-                                login and signup using 3rd party services via Google's and Microsoft's OAuth2.0 APIs
+                                Integrated OAuth2.0 authentication with Google and Microsoft login, enhancing security and providing seamless 
+                                third-party authentication
                             </li>
                         </ul>
                     </div>
@@ -109,60 +110,63 @@ export default function Resume(){
                     <div className="ml-6 mb-3 mt-2" style={{fontSize: '18px'}}>
                         <ul>
                             <li>
-                                Built a VIM-like terminal-based text editor with 0 dependencies utilizing C++ and the CMake build system
+                                Engineered a high-performance, cross-platform text editor in C++ with zero dependencies, ensuring a lightweight, 
+                                standalone application 
                             </li>
                             <li>
-                                Authored algorithms for precise rendering adjustments, ensuring a smooth user experience
+                                Designed and implemented low-level rendering algorithms to optimize speed for a smooth editing experience 
                             </li>
                             <li>
-                                Leveraged OS-specific APIs for cross-platform terminal interactions
+                                Integrated OS-specific APIs to handle keyboard inputs and text rendering for cross-platform compatibility
+                            </li>
+                            <li>
+                                Designed and implemented a token-based syntax highlighting system to highlight keywords and comments 
+                            </li>
+                            <li>
+                                mplemented CI/CD pipelines using GitHub Actions to automate build and release processes 
                             </li>
                         </ul>
                     </div>
 
                     <div className="flex w-full">
-                        <div className="mt-3 w-3/4" style={{fontSize: '18px'}}><b className="text-start">Portfolio Website</b> | <i>JavaScript, React/Next.js, HTML, CSS, Tailwind</i></div>
-                        <div className="mt-3 w-1/4" style={{fontSize: '18px'}}><p className="text-end">June 2024 &ndash; Present</p></div>
-                    </div>
-                    <div className="text-end" style={{fontSize: '18px'}}>
-                        <a className="text-end" href="https://nathandavis18.com" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>nathandavis18.com</a>
-                    </div>
-                    <div className="ml-6 mb-3 mt-2" style={{fontSize: '18px'}}>
-                        <ul>
-                            <li>
-                                Built a static React/Next.js app to showcase my skills and projects; 
-                                utilized Tailwind for a responsive design, enabling good viewing support on a wide range of devices
-                            </li>
-                            <li>
-                                Utilized React hooks, states, and references to create web games with serverless storage playable from my portfolio; 
-                                mobile-support included using swipe controls
-                            </li>
-                            <li>
-                                Utilized Next.js's Link and Navigation functionality for dynamic header updates
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="flex w-full">
-                        <div className="mt-3 w-3/4" style={{fontSize: '18px'}}><b className="text-start">Recipe Sharing Site</b> | <i>JavaScript, React, Python, Django, AWS, Nginx, Bootstrap</i></div>
-                        <div className="mt-3 w-1/4" style={{fontSize: '18px'}}><p className="text-end">July 2024 &ndash; Aug 2024</p></div>
+                        <div className="mt-3 w-3/4" style={{fontSize: '18px'}}><b className="text-start">Recipe Sharing Site</b> | <i>TypeScript, React/Next.js, TailwindCSS, Django, Python, Git</i></div>
+                        <div className="mt-3 w-1/4" style={{fontSize: '18px'}}><p className="text-end">July 2024 &ndash; Present</p></div>
                     </div>
                     <div className="text-end" style={{fontSize: '18px'}}>
                         <a className="text-end" href="https://github.com/nathandavis18/Recipe-Sharing-Site" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>github.com/nathandavis18/Recipe-Sharing-Site</a>
                     </div>
+                    <div className="ml-6 mb-3 mt-2" style={{fontSize: '18px'}}>
+                        <ul>
+                            <li>
+                                Developed a full-stack recipe-sharing platform using TypeScript, React/Next.js, and Django, enabling users to create, 
+                                store, and delete recipes 
+                            </li>
+                            <li>
+                                Implemented a responsive UI/UX with TailwindCSS, ensuring seamless browsing across devices 
+                            </li>
+                            <li>
+                                Designed and integrated a Django-based REST API, handling GET, POST, and DELETE functions 
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="flex w-full">
+                        <div className="mt-3 w-3/4" style={{fontSize: '18px'}}><b className="text-start">Data Structures and Algorithms</b> | <i>C++</i></div>
+                        <div className="mt-3 w-1/4" style={{fontSize: '18px'}}><p className="text-end">Oct 2023 &ndash; June 2024</p></div>
+                    </div>
+                    <div className="text-end" style={{fontSize: '18px'}}>
+                        <a className="text-end" href="https://github.com/nathandavis18/Projects" target="_blank" style={{color: '#ededed', textDecorationLine: 'none'}}>github.com/nathandavis18/Projects</a>
+                    </div>
                     <div className="ml-6 mb-5 mt-2" style={{fontSize: '18px'}}>
                         <ul>
                             <li>
-                                Developed a full-stack recipe sharing site to enhance web development skills
+                                Designed and implemented custom data structures (iterators and vectors) in C++ to learn memory management 
                             </li>
                             <li>
-                                Implemented React and JavaScript/JSX for the frontend and Django for the backend with AWS hosting
+                                Developed high-performing algorithms in C++ to learn algorithm implementation and design
                             </li>
                             <li>
-                                Configured a Nginx proxy server to facilitate secure communication between frontend and backend server
-                            </li>
-                            <li>
-                                Leveraged several AWS services (EC2, S3, CloudFront CDN, and VPCs) for optimized hosting and reduced latency
+                                Benchmarked algorithms against standard library equivalents, achieving equivalent speed and memory performance 
                             </li>
                         </ul>
                     </div>
