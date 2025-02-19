@@ -15,8 +15,8 @@ export default function NotVimEditor(){
                     <p className="text-sm mt-3">(This page is still a WIP, check back later for more progess on my blog about building my own text editor!)</p>
                 </div>
             </div>
-            <hr className="border-slate-500 w-full max-w-5xl"/>
-            <div className="max-w-5xl text-start mt-5">
+            <hr className="border-slate-500 w-full max-w-4xl"/>
+            <div className="max-w-full md:max-w-4xl text-start mt-5 px-5">
                 <h2 className="text-3xl font-semibold text-center mb-3">Building my own Text Editor</h2>
                 <p className="text-xl">
                     If you would like to read about the process of me building my own text editor, including the struggles I had to overcome, keep reading!
