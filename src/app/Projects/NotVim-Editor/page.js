@@ -252,7 +252,7 @@ export default function NotVimEditor(){
                     <VariableType>void</VariableType> <FunctionText>insertChar</FunctionText>{'('}<VariableType>const char</VariableType> <VariableName>c</VariableName>{'){'}<br />
                     &emsp;&emsp;std::<UserVariableType>string</UserVariableType>& <VariableName>currentLine</VariableName> = <VariableName>fileRows</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>cursorY</VariableName>{')'};
                     <br />
-                    &emsp;&emsp;<VariableName>currentLine</VariableName>.<FunctionText>insert</FunctionText>{'('}<VariableName>currentLine</VariableName>.<FunctionText>begin</FunctionText>{'()'} 
+                    &emsp;&emsp;<VariableName>currentLine</VariableName>.<FunctionText>insert</FunctionText><wbr />{'('}<VariableName>currentLine</VariableName>.<FunctionText>begin</FunctionText>{'()'} 
                     &nbsp;+ <VariableName>cursorX</VariableName>, <VariableName>c</VariableName>{')'}; <br />
                     &emsp;&emsp;++<VariableName>cursorX</VariableName>;<br />
                     {'}'}
@@ -281,7 +281,7 @@ export default function NotVimEditor(){
                     &emsp;&emsp;&emsp;&emsp;{'}'} <br />
                     &emsp;&emsp;{'}'} <br />
                     &emsp;&emsp;<ControlKeyword>else</ControlKeyword>{'{'}<br />
-                    &emsp;&emsp;&emsp;&emsp;<VariableName>currentLine</VariableName>.<FunctionText>erase</FunctionText>{'('}<VariableName>currentLine</VariableName>.<FunctionText>begin</FunctionText>{'()'}, <VariableName>cursorX</VariableName> - 1{')'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>currentLine</VariableName>.<FunctionText>erase</FunctionText><wbr />{'('}<VariableName>currentLine</VariableName>.<FunctionText>begin</FunctionText>{'()'}, <VariableName>cursorX</VariableName> - 1{')'}; <br />
                     &emsp;&emsp;&emsp;&emsp;--<VariableName>cursorX</VariableName>; <br />
                     &emsp;&emsp;{'}'} <br />
                     {'}'}
@@ -323,7 +323,7 @@ export default function NotVimEditor(){
                     <UserVariableType>size_t</UserVariableType> <VariableName>filePos</VariableName> = 0; <br />
                     <ControlKeyword>while</ControlKeyword>{'('}<VariableName>filePos</VariableName> {'<'} <VariableName>fileStr</VariableName>.<FunctionText>length</FunctionText>{'()){'} <br />
                     &emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>fileStr</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>filePos</VariableName>{')'} == {'"\\r\\n"){'}<br />
-                    &emsp;&emsp;&emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>substr</FunctionText>{'('}0, <VariableName>filePos</VariableName>{')'};<br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText><wbr />{'('}<VariableName>fileStr</VariableName>.<FunctionText>substr</FunctionText>{'('}0, <VariableName>filePos</VariableName>{')'};<br />
                     &emsp;&emsp;&emsp;&emsp;<VariableName>fileStr</VariableName>.<FunctionText>erase</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'}, <VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>filePos</VariableName> + 2{')'}; <br />
                     &emsp;&emsp;&emsp;&emsp;<VariableName>filePos</VariableName> = 0; <br />
                     &emsp;&emsp;{'}'} <br />
@@ -371,7 +371,7 @@ export default function NotVimEditor(){
                     &emsp;&emsp;<UserVariableType>size_t</UserVariableType> <VariableName>filePos</VariableName> = 0; <br />
                     &emsp;&emsp;<ControlKeyword>while</ControlKeyword>{'('}<VariableName>filePos</VariableName> {'<'} <VariableName>fileStr</VariableName>.<FunctionText>length</FunctionText>{'()){'} <br />
                     &emsp;&emsp;&emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>fileStr</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>filePos</VariableName>{')'} == {"'\\r\\n'){"}<br />
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>substr</FunctionText>{'('}0, <VariableName>filePos</VariableName>{')'};<br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText><wbr />{'('}<VariableName>fileStr</VariableName>.<FunctionText>substr</FunctionText>{'('}0, <VariableName>filePos</VariableName>{')'};<br />
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>fileStr</VariableName>.<FunctionText>erase</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'}, <VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>filePos</VariableName> + 2{')'}; <br />
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>filePos</VariableName> = 0; <br />
                     &emsp;&emsp;&emsp;&emsp;{'}'} <br />
@@ -411,7 +411,7 @@ export default function NotVimEditor(){
                     &emsp;&emsp;&emsp;&emsp;<VariableName>renderedLine</VariableName>{'['}<VariableName>i</VariableName>{']'} = ' '; <CommentText>//Replace tab with space</CommentText> <br />
                     &emsp;&emsp;&emsp;&emsp;<VariableType>int</VariableType> t = <VariableName>maxSpacesForTab</VariableName> - {'('}<VariableName>i</VariableName> % <VariableName>tabSpacing</VariableName>{')'}; <br />
                     &emsp;&emsp;&emsp;&emsp;<ControlKeyword>while</ControlKeyword>{'('}<VariableName>t</VariableName> {'>'} 0{'){'}<br />
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>renderedLine</VariableName>.<FunctionText>insert</FunctionText>{'('}<VariableName>renderedLine</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>i</VariableName>, ' '{')'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>renderedLine</VariableName>.<FunctionText>insert</FunctionText><wbr />{'('}<VariableName>renderedLine</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>i</VariableName>, ' '{')'}; <br />
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;--<VariableName>t</VariableName>; <br />
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;++<VariableName>i</VariableName>; <br />
                     &emsp;&emsp;&emsp;&emsp;{'}'} <br />
