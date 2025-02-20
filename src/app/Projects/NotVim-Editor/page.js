@@ -72,7 +72,7 @@ export default function NotVimEditor(){
                     <UserVariableType>DWORD</UserVariableType> <VariableName>defaultMode</VariableName>;<CommentText> //DWORD is just a typedef of unsigned long </CommentText> <br />
                     <FunctionText>GetConsoleMode</FunctionText>{'('}<FunctionText><wbr />GetStdHandle</FunctionText>{'('}<MacroType>STD_INPUT_HANDLE</MacroType>{')'}, &<VariableName>defaultMode</VariableName>{')'}; <br /> <br />
                     <VariableType>void</VariableType> <FunctionText>enableRawInputMode</FunctionText>{'()'}{'{'}<br />
-                    &emsp;&emsp;<UserVariableType>DWORD</UserVariableType> <VariableName>rawMode</VariableName> = <MacroType>ENABLE_EXTENDED_FLAGS</MacroType> | {'('}<VariableName>defaultMode</VariableName> & ~<MacroType>ENABLE_LINE_INPUT</MacroType> & ~<MacroType>ENABLE_PROCESSED_INPUT</MacroType>{')'};<br />
+                    &emsp;&emsp;<UserVariableType>DWORD</UserVariableType> <VariableName>rawMode</VariableName> = <MacroType>ENABLE_EXTENDED_FLAGS</MacroType> | {'('}<VariableName>defaultMode</VariableName> & ~<MacroType>ENABLE_LINE_INPUT</MacroType> & ~<MacroType>ENABLE_PROCESSED_INPUT</MacroType> <br />
                     &emsp;&emsp;&emsp; & ~<MacroType>ENABLE_ECHO_INPUT</MacroType> & ~<MacroType>ENABLE_PROCESSED_OUTPUT</MacroType> & ~<MacroType>ENABLE_WRAP_AT_EOL_OUTPUT</MacroType>{')'}; <br />
                     &emsp;&emsp;<FunctionText>SetConsoleMode</FunctionText>{'('}<wbr /><FunctionText>GetStdHandle</FunctionText>{'('}<MacroType>STD_INPUT_HANDLE</MacroType>{')'}, <VariableName>rawMode</VariableName>{')'};<br />
                     {'}'}<br /><br />
@@ -322,7 +322,7 @@ export default function NotVimEditor(){
                     std::<UserVariableType>string</UserVariableType>& <VariableName>fileStr</VariableName> = <VariableName>ss</VariableName>.<FunctionText>str</FunctionText>{'()'}; <br />
                     <UserVariableType>size_t</UserVariableType> <VariableName>filePos</VariableName> = 0; <br />
                     <ControlKeyword>while</ControlKeyword>{'('}<VariableName>filePos</VariableName> {'<'} <VariableName>fileStr</VariableName>.<FunctionText>length</FunctionText>{'()){'} <br />
-                    &emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>fileStr</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>filePos</VariableName>{')'} == {"'\\r\\n'){"}<br />
+                    &emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>fileStr</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>filePos</VariableName>{')'} == {'"\\r\\n"){'}<br />
                     &emsp;&emsp;&emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>substr</FunctionText>{'('}0, <VariableName>filePos</VariableName>{')'};<br />
                     &emsp;&emsp;&emsp;&emsp;<VariableName>fileStr</VariableName>.<FunctionText>erase</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'}, <VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>filePos</VariableName> + 2{')'}; <br />
                     &emsp;&emsp;&emsp;&emsp;<VariableName>filePos</VariableName> = 0; <br />
