@@ -13,18 +13,24 @@ export default function NotVimEditor(){
                 <h1 className="text-5xl font-semibold py-5">NotVim Editor</h1>
                 <div className="col-span-6 text-center pb-5" style={{fontSize: '18px'}}>
                     <a className="text-center" href="https://github.com/nathandavis18/NotVim-Editor" target="_blank">https://github.com/nathandavis18/NotVim-Editor</a>
-                    <p className="text-sm mt-3">{'('}This page is still a WIP, check back later for more progess on my blog about building my own text editor!{')'}</p>
                 </div>
             </div>
-            <hr className="border-slate-500 w-full max-w-4xl"/>
+            <div className="max-w-4xl sticky top-0 z-45 bg-zinc-900">
+                <hr className="border-slate-500 w-full max-w-4xl"/>
+                <blockquote className="my-8">
+                    <b>Chapters: </b> <a href="#chapter1">Building My Own Editor</a> | <a href="#chapter2">Enabling Raw Mode</a> | <a href="#chapter3">Getting Terminal Size</a> | <a href="#chapter4">Handling Input</a> | <a href="#chapter5">Displaying Text</a>
+                    &nbsp;| <a href="#chapter6">Controlling the File Cursor</a> | <a href="#chapter7">File Handling</a> | <a href="#chapter8">Handling Tabs</a> | <a href="#chapter9">Closing Notes</a>
+                </blockquote>
+                <hr className="border-slate-500 w-full max-w-4xl"/>
+            </div>
             <div className="max-w-full md:max-w-4xl text-start mt-5 px-5">
-                <h2 className="text-3xl font-semibold text-center mb-3">Building my own Text Editor</h2>
+                <h2 className="text-3xl font-semibold text-center mb-3" id="chapter1">Building my own Text Editor</h2>
                 <p className="text-xl">
                     If you would like to read about the process of me building my own text editor, including the struggles I had to overcome, keep reading!
                     This blog will walk you through the key steps/parts of the Windows version of my editor, and how I put it all together!
                 </p>
                 <hr className="border-slate-500 my-5"/>
-                <h2 className="text-2xl font-semibold text-center mb-3">Entering Raw Mode in the Terminal</h2>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter2">Entering Raw Mode in the Terminal</h2>
                 <p className="text-xl">
                     To make a terminal-based text editor, you need a way for the terminal to accept input without the need for pressing the Enter/Return key.
                     To solve this issue, we put our terminal into what is known as 'Raw Mode'. <br /> <br />
@@ -78,7 +84,7 @@ export default function NotVimEditor(){
                     With these functions set up, any time we need to enable or disable raw mode, its as easy as calling the function. 
                 </p>
                 <hr className="border-slate-500 mb-5"/>
-                <h2 className="text-2xl font-semibold text-center mb-3">Getting Terminal Size</h2>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter3">Getting Terminal Size</h2>
                 <p className="text-xl mt-5 mb-3">
                     Next up on the list is to get the terminal size. This is the total size of displayable area within the terminal. This information is important so we know
                     how many rows of data can be displayed at a time, as well as how many characters can be displayed left-right without the lines wrapping. <br /> <br />
@@ -103,13 +109,13 @@ export default function NotVimEditor(){
                     controlling what the input does.
                 </p>
                 <hr className="border-slate-500 my-5"/>
-                <h2 className="text-2xl font-semibold text-center mb-3">Handling Input</h2>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter4">Handling Input</h2>
                 <p className="text-xl mb-3">
                     The Win32 API provides a very handy function, <code className="text-[17px]"><FunctionText>_getch</FunctionText></code>, which helps parse the input from the user quickly.
                     This function returns an int, which represents a character code. Knowing this, we can do the following:
                 </p>
                 <CodeBlock text="Intro to _getch()">
-                    #include {"<conio.h>"}; <br />
+                    #include {"<conio.h>"} <br />
                     <VariableType>int</VariableType> <VariableName>input</VariableName> = <FunctionText>_getch</FunctionText>{'('}{')'};
                 </CodeBlock>
                 <p className="text-xl mb-3 mt-5">
@@ -124,7 +130,7 @@ export default function NotVimEditor(){
                     To fix this, we can read that input and either ignore it or process it farther to get the specific key pressed. Putting this all into a function, we get something like:
                 </p>
                 <CodeBlock text="Input.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Input/Input.cpp#L44"}>
-                    #include {"<conio.h>"}; <br />
+                    #include {"<conio.h>"} <br />
                     <VariableType>const int</VariableType> <VariableName>functionKeyCode</VariableName> = 0; <br />
                     <VariableType>const int</VariableType> <VariableName>actionKeyCode</VariableName> = 224; <br />
                     <VariableType>int</VariableType> <FunctionText>handleInput</FunctionText>{'()'}{'{'}<br />
@@ -145,7 +151,7 @@ export default function NotVimEditor(){
                     depending on what keycode was returned after the action keycode, I returned a specific action type. 
                 </p>
                 <hr className="border-slate-500 my-5"/>
-                <h2 className="text-2xl font-semibold text-center mb-3">Displaying Text to User</h2>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter5">Displaying Text to User</h2>
                 <p className="text-xl mb-3 mt-5">
                     Displaying the text to the user is pretty much the same as displaying text on your console through normal means. 
                     With C++23 you can use <code className="text-[17px]">std::<FunctionText>print</FunctionText></code>, otherwise you can use <code className="text-[17px]">std::<FunctionText>cout</FunctionText></code>
@@ -153,7 +159,7 @@ export default function NotVimEditor(){
                     For example, to display "Hello, World", you can do something like:
                 </p>
                 <CodeBlock text="Displaying Text to user Example">
-                    #include {"<iostream>"}; <br />
+                    #include {"<iostream>"} <br />
                     <VariableType>int</VariableType> <FunctionText>main</FunctionText>{"(){"}<br />
                     &emsp;&emsp;std::<FunctionText>cout</FunctionText> {'<<'} "Hello, World" {'<<'} std::<FunctionText>endl</FunctionText>; <br />
                     {'}'}
@@ -167,7 +173,7 @@ export default function NotVimEditor(){
                     Rather than starting from the beginning of the vector when displaying to the user, I start from this row offset.
                     For example, say we have this scenario:
                 </p>
-                <CodeBlock text="Row Offset example">
+                <CodeBlock text="Row Offset Example">
                     <CommentText>//fileRows is defined somewhere in the file and contains all the rows of text</CommentText> <br />
                     std::<UserVariableType>string</UserVariableType> <VariableName>buffer</VariableName> = {'""'};<br />
                     <ControlKeyword>for</ControlKeyword>{'('}<VariableType>int</VariableType> <VariableName>i</VariableName> = <VariableName>rowOffset</VariableName>
@@ -184,7 +190,7 @@ export default function NotVimEditor(){
                     If the strings for each row are less than the max columns of the terminal, then this will work fine. But what if the lines are longer?
                     Well, just like how we store the row offset, we can store a column offset, and do:
                 </p>
-                <CodeBlock>
+                <CodeBlock text="Column Offset Example">
                     std::<UserVariableType>string</UserVariableType> <VariableName>buffer</VariableName> = {'""'};<br />
                     <ControlKeyword>for</ControlKeyword>{'('}<VariableType>int</VariableType> <VariableName>i</VariableName> = <VariableName>rowOffset</VariableName>
                     ; <VariableName>i</VariableName> {'<'} <VariableName>rows</VariableName> + <VariableName>rowOffset</VariableName>; ++<VariableName>i</VariableName>{'){'}<br />
@@ -234,7 +240,7 @@ export default function NotVimEditor(){
                     Now let's move on to controlling the cursor so we can control where we type.
                 </p>
                 <hr className="border-slate-500 my-5"/>
-                <h2 className="text-2xl font-semibold text-center mb-3">Controlling the File Cursor</h2>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter6">Controlling the File Cursor</h2>
                 <p className="text-xl mb-3 mt-5">
                     We need to constantly know where in the file we are currently at. We can do this by storing two 
                     variables: <VariableName>cursorX</VariableName> and <VariableName>cursorY</VariableName>. As the user inputs text, the <VariableName>cursorX</VariableName> position
@@ -287,6 +293,143 @@ export default function NotVimEditor(){
                     Also, notice how we were using references of the lines this time? References are named aliases to whatever they are referencing, meaning they 'are' the item they are referencing, just a different name. 
                     We can use references to pass items around to functions without creating copies, much like pointers, without the need for the arrow-operator. We can also use references like this 
                     to make it easier to access a specific element of a vector so we don't have to keep doing std::<UserVariableType>vector</UserVariableType>::<FunctionText>at</FunctionText>(index).
+                    <br /><br />
+                    With cursor movement complete, we can move on to how we load and save the file.
+                </p>
+                <hr className="border-slate-500 my-5"/>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter7">File Handling</h2>
+                <p className="text-xl mb-3 mt-5">
+                    Later on, we will want to allow the user to enter a file name, but for now we will just use a test value. To read file contents we need an
+                    input file stream, and to save them we need an output file stream. It is also a good idea to build a file path, so we can use filesystem for that.
+                    We can load contents pretty simply like this:
+                </p>
+                <CodeBlock text="Reading From File Example">
+                    #include {'<fstream>'}<br />
+                    #include {'<sstream>'}<br />
+                    #include {'<filesystem>'}<br />
+                    <VariableType>const</VariableType> std::<UserVariableType>string</UserVariableType> <VariableName>testFile</VariableName> = {'"test.cpp"'}; <br />
+                    std::filesystem::<UserVariableType>path</UserVariableType> <VariableName>path</VariableName> = std::filesystem::<FunctionText>current_path</FunctionText>{'()'} / <VariableName>testFile</VariableName>; <br />
+                    std::<UserVariableType>ifstream</UserVariableType> <VariableName>file</VariableName>{'('}<VariableName>path</VariableName>{')'}; <br />
+                    std::<UserVariableType>stringstream</UserVariableType> <VariableName>ss</VariableName>; <br />
+                    <VariableName>ss</VariableName> {'<<'} <VariableName>file</VariableName>.<FunctionText>rdbuf</FunctionText>{'()'};
+                </CodeBlock>
+                <p className="text-xl mb-3 mt-5">
+                    The file contents are now stored into a stringstream, which we can then scan through the string and find where all the new lines {'(\\r\\n)'} are at.
+                    There are a couple of ways to do this, but we will stick to this method for now:
+                </p>
+                <CodeBlock text="Separating File into Rows">
+                    std::<UserVariableType>vector</UserVariableType>{'<'}std::<UserVariableType>string</UserVariableType>{'>'} <VariableName>fileRows</VariableName>; <br />
+                    std::<UserVariableType>string</UserVariableType>& <VariableName>fileStr</VariableName> = <VariableName>ss</VariableName>.<FunctionText>str</FunctionText>{'()'}; <br />
+                    <UserVariableType>size_t</UserVariableType> <VariableName>filePos</VariableName> = 0; <br />
+                    <ControlKeyword>while</ControlKeyword>{'('}<VariableName>filePos</VariableName> {'<'} <VariableName>fileStr</VariableName>.<FunctionText>length</FunctionText>{'()){'} <br />
+                    &emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>fileStr</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>filePos</VariableName>{')'} == {"'\\r\\n'){"}<br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>substr</FunctionText>{'('}0, <VariableName>filePos</VariableName>{')'};<br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>fileStr</VariableName>.<FunctionText>erase</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'}, <VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>filePos</VariableName> + 2{')'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>filePos</VariableName> = 0; <br />
+                    &emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;<ControlKeyword>else</ControlKeyword>{'{'} <br />
+                    &emsp;&emsp;&emsp;&emsp;++<VariableName>filePos</VariableName>; <br />
+                    &emsp;&emsp;{'}'} <br />
+                    {'}'} <br />
+                    <VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText>{'('}<VariableName>fileStr</VariableName>{')'}; <CommentText>//Last line to add</CommentText>
+                </CodeBlock>
+                <p className="text-xl mb-3 mt-5">
+                    This is where we introduce <VariableName>fileRows</VariableName>. Each new line gets loaded into its own string so we can display it to the user. 
+                    We remove the {'\\r\\n'} from the string since we want full control over the display. <br /><br />
+
+                    Saving contents to the file is pretty simple as well. But we have to add the new line characters back into the final string.
+                </p>
+                <CodeBlock text="Saving to the File">
+                    std::<UserVariableType>string</UserVariableType> <VariableName>output</VariableName>; <br />
+                    <ControlKeyword>for</ControlKeyword> {'('}<UserVariableType>size_t</UserVariableType> <VariableName>i</VariableName> = 0; <VariableName>i</VariableName> {'<'} <VariableName>fileRows</VariableName>.<FunctionText>size</FunctionText>{'()'}; ++<VariableName>i</VariableName>{'){'}<br />
+                    &emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>i</VariableName> == <VariableName>fileRows</VariableName>.<FunctionText>size</FunctionText>{'()'} - 1{'){'} <br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>output</VariableName>.<FunctionText>append</FunctionText>{'('}<VariableName>fileRows</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>i</VariableName>{'))'}; <br />
+                    &emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;<ControlKeyword>else</ControlKeyword>{'{'} <br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>output</VariableName>.<FunctionText>append</FunctionText>{'('}<VariableName>fileRows</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>i</VariableName>{')'} + {'"\\r\\n")'}; <br />
+                    &emsp;&emsp;{'}'} <br />
+                    {'}'} <br />
+                    <br />
+                    std::<UserVariableType>ofstream</UserVariableType> <VariableName>outFile</VariableName>{'('}<VariableName>path</VariableName>{')'};<br />
+                    <VariableName>outFile</VariableName> {'<<'} <VariableName>output</VariableName>;
+                </CodeBlock>
+                <p className="text-xl mb-3 mt-5">
+                    Finally, we can wrap both of these into their own functions so we can load and save the file with ease.
+                </p>
+                <CodeBlock text="File.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/File/File.cpp#L53"}>
+                    #include {'<fstream>'} <br />
+                    #include {'<sstream>'} <br />
+                    #include {'<filesystem>'} <br /> <br />
+                    std::<UserVariableType>vector</UserVariableType>{'<'}std::<UserVariableType>string</UserVariableType>{'>'} <VariableName>fileRows</VariableName>; <br />
+                    <VariableType>const</VariableType> std::<UserVariableType>string</UserVariableType> <VariableName>testFile</VariableName> = "test.cpp"; <br />
+                    std::filesystem::<UserVariableType>path</UserVariableType> <VariableName>path</VariableName> = std::filesystem::<FunctionText>current_path</FunctionText>{'()'} / <VariableName>testFile</VariableName>; <br /> <br />
+                    <VariableType>void</VariableType> <FunctionText>loadFromFile</FunctionText>{'(){'}<br />
+                    &emsp;&emsp;std::<UserVariableType>ifstream</UserVariableType> <VariableName>file</VariableName>(<VariableName>path</VariableName>);<br />
+                    &emsp;&emsp;std::<UserVariableType>stringstream</UserVariableType> <VariableName>ss</VariableName>; <br />
+                    &emsp;&emsp;<VariableName>ss</VariableName> {'<<'} <VariableName>file</VariableName>.<FunctionText>rdbuf</FunctionText>{'()'}; <br /><br />
+                    &emsp;&emsp;std::<UserVariableType>string</UserVariableType>& <VariableName>fileStr</VariableName> = <VariableName>ss</VariableName>.<FunctionText>str</FunctionText>{'()'}; <br />
+                    &emsp;&emsp;<UserVariableType>size_t</UserVariableType> <VariableName>filePos</VariableName> = 0; <br />
+                    &emsp;&emsp;<ControlKeyword>while</ControlKeyword>{'('}<VariableName>filePos</VariableName> {'<'} <VariableName>fileStr</VariableName>.<FunctionText>length</FunctionText>{'()){'} <br />
+                    &emsp;&emsp;&emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>fileStr</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>filePos</VariableName>{')'} == {"'\\r\\n'){"}<br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>substr</FunctionText>{'('}0, <VariableName>filePos</VariableName>{')'};<br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>fileStr</VariableName>.<FunctionText>erase</FunctionText>{'('}<VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'}, <VariableName>fileStr</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>filePos</VariableName> + 2{')'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>filePos</VariableName> = 0; <br />
+                    &emsp;&emsp;&emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;&emsp;&emsp;<ControlKeyword>else</ControlKeyword>{'{'} <br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;++<VariableName>filePos</VariableName>; <br />
+                    &emsp;&emsp;&emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;<VariableName>fileRows</VariableName>.<FunctionText>emplace_back</FunctionText>{'('}<VariableName>fileStr</VariableName>{')'}; <CommentText>//Last line to add</CommentText> <br />
+                    {'}'} <br /> <br />
+                    <VariableType>void</VariableType> <FunctionText>saveToFile</FunctionText>{'(){'}<br />
+                    &emsp;&emsp;std::<UserVariableType>string</UserVariableType> <VariableName>output</VariableName>; <br />
+                    &emsp;&emsp;<ControlKeyword>for</ControlKeyword> {'('}<UserVariableType>size_t</UserVariableType> <VariableName>i</VariableName> = 0; <VariableName>i</VariableName> {'<'} <VariableName>fileRows</VariableName>.<FunctionText>size</FunctionText>{'()'}; ++<VariableName>i</VariableName>{'){'}<br />
+                    &emsp;&emsp;&emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>i</VariableName> == <VariableName>fileRows</VariableName>.<FunctionText>size</FunctionText>{'()'} - 1{'){'} <br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>output</VariableName>.<FunctionText>append</FunctionText>{'('}<VariableName>fileRows</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>i</VariableName>{'))'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;&emsp;&emsp;<ControlKeyword>else</ControlKeyword>{'{'} <br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>output</VariableName>.<FunctionText>append</FunctionText>{'('}<VariableName>fileRows</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>i</VariableName>{')'} + {'"\\r\\n")'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;{'}'} <br />
+                    <br />
+                    &emsp;&emsp;std::<UserVariableType>ofstream</UserVariableType> <VariableName>outFile</VariableName>{'('}<VariableName>path</VariableName>{')'};<br />
+                    &emsp;&emsp;<VariableName>outFile</VariableName> {'<<'} <VariableName>output</VariableName>; <br />
+                    {'}'}
+                </CodeBlock>
+                <hr className="border-slate-500 my-5"/>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter8">Handling Tabs</h2>
+                <p className="text-xl mb-3 mt-5">
+                    The last major hurdle is how to handle tab characters without breaking the display. I chose to replace tab characters with spaces, with each tab
+                    stop occuring at a multiple of 8 spaces. You can handle it like so:
+                </p>
+                <CodeBlock text="Console.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Console/Console.cpp#L897"}>
+                    <VariableType>int</VariableType> <VariableName>maxSpacesForTab</VariableName> = 7, <VariableName>tabSpacing</VariableName> = 8; <br />
+                    <VariableType>void</VariableType> <FunctionText>replaceTabs</FunctionText>{'('}std::<UserVariableType>string</UserVariableType>& <VariableName>renderedLine</VariableName>{'){'} <br />
+                    &emsp;&emsp;<UserVariableType>size_t</UserVariableType> <VariableName>length</VariableName> = <VariableName>renderedLine</VariableName>.<FunctionText>length</FunctionText>{'()'}; <br />
+                    &emsp;&emsp;<ControlKeyword>for</ControlKeyword>{'('}<UserVariableType>size_t</UserVariableType> <VariableName>i</VariableName> = 0; <VariableName>i</VariableName> {'<'} <VariableName>length</VariableName>; ++<VariableName>i</VariableName>{'){'}<br />
+                    &emsp;&emsp;&emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>renderedLine</VariableName>{'['}<VariableName>i</VariableName>{']'} != '\t'{')'} <ControlKeyword>continue</ControlKeyword>; <CommentText>//If its not a tab, skip over it</CommentText><br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableName>renderedLine</VariableName>{'['}<VariableName>i</VariableName>{']'} = ' '; <CommentText>//Replace tab with space</CommentText> <br />
+                    &emsp;&emsp;&emsp;&emsp;<VariableType>int</VariableType> t = <VariableName>maxSpacesForTab</VariableName> - {'('}<VariableName>i</VariableName> % <VariableName>tabSpacing</VariableName>{')'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;<ControlKeyword>while</ControlKeyword>{'('}<VariableName>t</VariableName> {'>'} 0{'){'}<br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<VariableName>renderedLine</VariableName>.<FunctionText>insert</FunctionText>{'('}<VariableName>renderedLine</VariableName>.<FunctionText>begin</FunctionText>{'()'} + <VariableName>i</VariableName>, ' '{')'}; <br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;--<VariableName>t</VariableName>; <br />
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;++<VariableName>i</VariableName>; <br />
+                    &emsp;&emsp;&emsp;&emsp;{'}'} <br />
+                    &emsp;&emsp;&emsp;&emsp;<ControlKeyword>if</ControlKeyword>{'('}<VariableName>renderedLine</VariableName>.<FunctionText>length</FunctionText>{'()'} {'>'} <VariableName>lineLength</VariableName>{')'} <VariableName>lineLength</VariableName> = <VariableName>renderedLine</VariableName>.<FunctionText>length</FunctionText>{'()'}; <br />
+                    &emsp;&emsp;{'}'} <br />
+                    {'}'}
+                </CodeBlock>
+                <p className="text-xl mb-3 mt-5">
+                    What we do here is we calculate the distance from the current character to the nearest multiple of 8, and add spaces until we reach that multiple of 8.<br /><br />
+                    If you choose to implement this, you also have to make sure you update your cursor position or properly as well. 
+                </p>
+                <hr className="border-slate-500 my-5"/>
+                <h2 className="text-2xl font-semibold text-center mb-3" id="chapter9">Closing Notes</h2>
+                <p className="text-xl mb-3 mt-5">
+                    And with that, all the major pieces of the text editor are here! Some of the implementation details have been left out, so if you following along with this while building your own editor, feel free
+                    to check out my GitHub repository linked above if you get stuck. <br /><br />
+                    
+                    This has been a fun learning experience for me to work on building and optimizing. And now maybe you can learn too!
                 </p>
             </div>
         </div>
