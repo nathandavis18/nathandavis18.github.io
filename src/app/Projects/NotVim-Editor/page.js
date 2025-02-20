@@ -51,8 +51,8 @@ export default function NotVimEditor(){
                     and then call another function from the Win32 API.
                 </p>
                 <CodeBlock text="Enable Raw Mode Example">
-                    <UserVariableType>DWORD</UserVariableType> <VariableName>rawMode</VariableName> = <MacroType>ENABLE_EXTENDED_FLAGS</MacroType> | {'('}<VariableName>defaultMode</VariableName> & ~<MacroType>ENABLE_LINE_INPUT</MacroType> & ~<MacroType>ENABLE_PROCESSED_INPUT</MacroType>{')'};<br />
-                    &emsp; & ~<MacroType>ENABLE_ECHO_INPUT</MacroType> & ~<MacroType>ENABLE_PROCESSED_OUTPUT</MacroType> & ~<MacroType>ENABLE_WRAP_AT_EOL_OUTPUT</MacroType> <br />
+                    <UserVariableType>DWORD</UserVariableType> <VariableName>rawMode</VariableName> = <MacroType>ENABLE_EXTENDED_FLAGS</MacroType> | {'('}<VariableName>defaultMode</VariableName> & ~<MacroType>ENABLE_LINE_INPUT</MacroType> & ~<MacroType>ENABLE_PROCESSED_INPUT</MacroType><br />
+                    &emsp; & ~<MacroType>ENABLE_ECHO_INPUT</MacroType> & ~<MacroType>ENABLE_PROCESSED_OUTPUT</MacroType> & ~<MacroType>ENABLE_WRAP_AT_EOL_OUTPUT</MacroType>{')'} <br />
                     <FunctionText>SetConsoleMode</FunctionText>{'('}<wbr /><FunctionText>GetStdHandle</FunctionText>{'('}<MacroType>STD_INPUT_HANDLE</MacroType>{')'}, <VariableName>rawMode</VariableName>{')'};
                 </CodeBlock>
                 <p className="text-xl mt-5 mb-3">
