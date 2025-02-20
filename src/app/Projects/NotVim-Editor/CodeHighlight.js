@@ -27,3 +27,15 @@ export function MacroType({children}, className){
         <em className={`inline text-purple-600 ${className}`}>{children}</em>
     )
 }
+
+export function ControlKeyword({children}, className){
+    return(
+        <em className={`inline text-fuchsia-400 ${className}`}>{children}</em>
+    )
+}
+
+export function VariableName({children}, className){
+    return(
+        <em className={`inline text-blue-400 ${className}`}>{children}</em>
+    )
+}
