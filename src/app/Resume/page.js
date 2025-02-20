@@ -177,7 +177,7 @@ export default function Resume(){
                 <div className="col-span-6">
                     <h2 id="experience" style={{fontSize: '30px'}}>Experience</h2>
                     <div className="flex w-full">   
-                        <div className="mt-3 w-3/4" style={{fontSize: '18px'}}><b className="text-start">Personal Shopper</b> - Walmart | Layton, UT</div>
+                        <div className="mt-3 w-3/4" style={{fontSize: '18px'}}><b className="text-start">Personal Shopper</b> - Walmart</div>
                         <div className="mt-3 w-1/4" style={{fontSize: '18px'}}><p className="text-end">Aug 2020 &ndash; Present</p></div>
                     </div>
                     <div className="ml-6 mb-5" style={{fontSize: '18px'}}>
