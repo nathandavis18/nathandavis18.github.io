@@ -67,7 +67,7 @@ export default function NotVimEditor(){
                     <br /><br />
                     We can wrap this all into functions to allow us to easily enable/disable raw input mode, like so:
                 </p>
-                <CodeBlock text="Console.cpp" linkToFile="https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Console/Console.cpp#L1070">
+                <CodeBlock text="Console.cpp" linkToFile="https://github.com/nathandavis18/NotVim-Editor/blob/a11628dc1830bdfdcc3d123ecc809cc7437f5ed2/src/Console/Windows/Console.cpp#L85">
                     #include {"<Windows.h>"} <br />
                     <UserVariableType>DWORD</UserVariableType> <VariableName>defaultMode</VariableName>;<CommentText> //DWORD is just a typedef of unsigned long </CommentText> <br />
                     <FunctionText>GetConsoleMode</FunctionText>{'('}<FunctionText><wbr />GetStdHandle</FunctionText>{'('}<MacroType>STD_INPUT_HANDLE</MacroType>{')'}, &<VariableName>defaultMode</VariableName>{')'}; <br /> <br />
@@ -91,7 +91,7 @@ export default function NotVimEditor(){
 
                     We can achieve this pretty simply with the Win32 API, setting it up in a function like:
                 </p>
-                <CodeBlock text="Console.cpp" linkToFile="https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Console/Console.cpp#L1106">
+                <CodeBlock text="Console.cpp" linkToFile="https://github.com/nathandavis18/NotVim-Editor/blob/a11628dc1830bdfdcc3d123ecc809cc7437f5ed2/src/Console/Windows/Console.cpp#L62">
                     <VariableType>int</VariableType> <VariableName>rows</VariableName>, <VariableName>cols</VariableName>; <br />
                     <VariableType>void</VariableType> <FunctionText>getWindowSize</FunctionText>{'()'}{'{'}<br />
                     &emsp;&emsp;<UserVariableType>CONSOLE_SCREEN_BUFFER_INFO</UserVariableType> <VariableName>screenInfo</VariableName>; <br />
@@ -222,7 +222,7 @@ export default function NotVimEditor(){
                     The console will also store previous 'frames', allowing the user to scroll up and view them. We can clear this with <code className="text-[17px]">Escape Code "\x1b{'['}3J"</code>.
                     So, let's put this all together:
                 </p>
-                <CodeBlock text="Console.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Console/Console.cpp#L252"}>
+                <CodeBlock text="Editor.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/a11628dc1830bdfdcc3d123ecc809cc7437f5ed2/src/Editor/Editor.cpp#L250"}>
                     std::<UserVariableType>string</UserVariableType> <VariableName>buffer</VariableName> = {'"\\x1b[1;1H"'}; <CommentText>//Move cursor to (1,1)</CommentText><br />
                     <ControlKeyword>for</ControlKeyword>{'('}<VariableType>int</VariableType> <VariableName>i</VariableName> = <VariableName>rowOffset</VariableName>
                     ; <VariableName>i</VariableName> {'<'} <VariableName>rows</VariableName> + <VariableName>rowOffset</VariableName>; ++<VariableName>i</VariableName>{'){'}<br />
@@ -248,7 +248,7 @@ export default function NotVimEditor(){
                     <br /><br />
                     Handling character insertion is the easiest scenario. We can just do the following:
                 </p>
-                <CodeBlock text="Console.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Console/Console.cpp#L678"}>
+                <CodeBlock text="Editor.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/a11628dc1830bdfdcc3d123ecc809cc7437f5ed2/src/Editor/Editor.cpp#L658"}>
                     <VariableType>void</VariableType> <FunctionText>insertChar</FunctionText>{'('}<VariableType>const char</VariableType> <VariableName>c</VariableName>{'){'}<br />
                     &emsp;&emsp;std::<UserVariableType>string</UserVariableType>& <VariableName>currentLine</VariableName> = <VariableName>fileRows</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>cursorY</VariableName>{')'};
                     <br />
@@ -267,7 +267,7 @@ export default function NotVimEditor(){
 
                     We can achieve that with the following:
                 </p>
-                <CodeBlock text="Console.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Console/Console.cpp#L566"}>
+                <CodeBlock text="Editor.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/a11628dc1830bdfdcc3d123ecc809cc7437f5ed2/src/Editor/Editor.cpp#L545"}>
                 <VariableType>void</VariableType> <FunctionText>deleteChar</FunctionText>{'(){'}<br />
                     &emsp;&emsp;std::<UserVariableType>string</UserVariableType>& <VariableName>currentLine</VariableName> = <VariableName>fileRows</VariableName>.<FunctionText>at</FunctionText>{'('}<VariableName>cursorY</VariableName>{')'};
                     <br />
@@ -402,7 +402,7 @@ export default function NotVimEditor(){
                     The last major hurdle is how to handle tab characters without breaking the display. I chose to replace tab characters with spaces, with each tab
                     stop occuring at a multiple of 8 spaces. You can handle it like so:
                 </p>
-                <CodeBlock text="Console.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/fb343d3b9e572f8e3705fc9bbeb7fae303b7c1a2/src/Console/Console.cpp#L897"}>
+                <CodeBlock text="Editor.cpp" linkToFile={"https://github.com/nathandavis18/NotVim-Editor/blob/a11628dc1830bdfdcc3d123ecc809cc7437f5ed2/src/Editor/Editor.cpp#L843"}>
                     <VariableType>int</VariableType> <VariableName>maxSpacesForTab</VariableName> = 7, <VariableName>tabSpacing</VariableName> = 8; <br />
                     <VariableType>void</VariableType> <FunctionText>replaceTabs</FunctionText>{'('}std::<UserVariableType>string</UserVariableType>& <VariableName>renderedLine</VariableName>{'){'} <br />
                     &emsp;&emsp;<UserVariableType>size_t</UserVariableType> <VariableName>length</VariableName> = <VariableName>renderedLine</VariableName>.<FunctionText>length</FunctionText>{'()'}; <br />
