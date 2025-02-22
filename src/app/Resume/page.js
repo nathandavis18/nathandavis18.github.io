@@ -114,16 +114,19 @@ export default function Resume(){
                                 standalone application 
                             </li>
                             <li>
+                                Leveraged build system abstractions to separate OS-specific code from core application, enhancing maintainability and scalability, simplifying cross-platform builds
+                            </li>
+                            <li>
+                                Adopted a Test Driven Development (TDD) approach using GoogleTest to Unit Test core functions, significantly enhancing reliability and ensuring identical behavior when refactoring code
+                            </li>
+                            <li>
                                 Designed and implemented low-level rendering algorithms to optimize speed for a smooth editing experience 
                             </li>
                             <li>
-                                Integrated OS-specific APIs to handle keyboard inputs and text rendering for cross-platform compatibility
+                                Implemented CI/CD pipelines using GitHub Actions to automate build and release processes 
                             </li>
                             <li>
                                 Designed and implemented a token-based syntax highlighting system to highlight keywords and comments 
-                            </li>
-                            <li>
-                                mplemented CI/CD pipelines using GitHub Actions to automate build and release processes 
                             </li>
                         </ul>
                     </div>
