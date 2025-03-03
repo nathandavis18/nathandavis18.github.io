@@ -2,17 +2,17 @@ import {FunctionText, CommentText, UserVariableType, MacroType, VariableType, Co
 import CodeBlock from './CodeBlocks';
 
 export const metadata = {
-    title: "NotVim-Editor - A 0 dependencies Text Editor",
+    title: "Mini-Editor - A 0 dependencies Text Editor",
     description: "A Cross-Platform, 0-dependencies, terminal based text editor written in C++",
     author: "Nathan Davis"
 }
-export default function NotVimEditor(){
+export default function MiniEditor(){
     return(
         <div className="place-items-center px-3">
             <div className="max-w-4xl text-center">
-                <h1 className="text-5xl font-semibold py-5">NotVim Editor</h1>
+                <h1 className="text-5xl font-semibold py-5">Mini Editor</h1>
                 <div className="col-span-6 text-center pb-5" style={{fontSize: '18px'}}>
-                    <a className="text-center" href="https://github.com/nathandavis18/NotVim-Editor" target="_blank">https://github.com/nathandavis18/NotVim-Editor</a>
+                    <a className="text-center" href="https://github.com/nathandavis18/Mini-Editor" target="_blank">https://github.com/nathandavis18/Mini-Editor</a>
                 </div>
             </div>
             <div className="max-w-4xl sticky top-0 z-45 bg-zinc-900">

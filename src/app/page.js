@@ -15,7 +15,11 @@ export default function Home() {
             In my free time I like to work on individual projects, do independent research, spend time with my family, and play some of my favorite video games (currently Terraria).<br /><br />
 
             I have built an appointment scheduling system for Weber State University to use freely and openly for educational and non-commercial purposes. 
-            You can view that project <a href="https://github.com/nathandavis18/Steamboat-Willie" target="_blank">here</a>. 
+            You can view that project <a href="https://github.com/nathandavis18/Steamboat-Willie" target="_blank">here</a>. <br /><br />
+
+            I have also built, and am currently working on a custom text editor called Mini Editor. This is a 0-dependencies text/code editor written entirely in C++.
+            You can view that project <Link href="/Projects/Mini-Editor">here</Link>. <br /> <br />
+
             You can also find more information about my other projects <Link href="/Projects/Project-List">here</Link>.
             <br /> <br />
             My Socials: <a href="https://linkedin.com/in/nathandavis18" target='_blank'>LinkedIn</a> | <a href="https://github.com/nathandavis18" target='_blank'>GitHub</a>

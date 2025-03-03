@@ -39,7 +39,7 @@ export default function Projects(){
                     <hr className="border-zinc-500 mb-3" />
                 </div>
                 <div className="col-span-6" style={{fontSize: '18px'}}>
-                    <Link href="/Projects/NotVim-Editor" title="Text Editor"><h2 id="textEditor" style={{fontSize: '30px'}}>Text Editor</h2></Link>
+                    <Link href="/Projects/Mini-Editor" title="Text Editor"><h2 id="textEditor" style={{fontSize: '30px'}}>Text Editor</h2></Link>
 
                     <p className="ml-5 mr-2 mb-3 mt-1">
                         A 0-dependencies (not even curses/ncurses) console-based text editor, similar to Vim. This project is built using C++, and is designed to be cross-platform, as well as 

@@ -58,7 +58,7 @@ export default function Navigation(){
                                         <Link href="/Projects/Project-List" className={getLinkStyle("/Projects/Project-List")} style={{textDecoration: 'none'}}>Project List</Link>
                                     </MenuItem>
                                     <MenuItem className="mb-2">
-                                        <Link href="/Projects/NotVim-Editor" className={getLinkStyle("/Projects/NotVim-Editor")} style={{textDecoration: 'none'}}>NotVim-Editor</Link>
+                                        <Link href="/Projects/Mini-Editor" className={getLinkStyle("/Projects/Mini-Editor")} style={{textDecoration: 'none'}}>Mini-Editor</Link>
                                     </MenuItem>
                                 </MenuItems>
                             </Menu>
@@ -105,7 +105,7 @@ export default function Navigation(){
                                         <CloseButton as={Link} href="/Projects/Project-List" className={getLinkStyle("/Projects/Project-List")} style={{textDecoration: 'none'}}>Project List</CloseButton>
                                     </MenuItem>
                                     <MenuItem className="mb-2">
-                                        <CloseButton as={Link} href="/Projects/NotVim-Editor" className={getLinkStyle("/Projects/NotVim-Editor")} style={{textDecoration: 'none'}}>NotVim-Editor</CloseButton>
+                                        <CloseButton as={Link} href="/Projects/Mini-Editor" className={getLinkStyle("/Projects/Mini-Editor")} style={{textDecoration: 'none'}}>Mini-Editor</CloseButton>
                                     </MenuItem>
                                 </MenuItems>
                             </Menu>
